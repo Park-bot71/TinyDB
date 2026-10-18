@@ -16,7 +16,7 @@ final XOR `0xffffffff`). It detects accidental corruption, not malicious edits.
 | 6 | 2 | Type: metadata 0, heap 1, free 2 |
 | 8 | 4 | Page ID, must match file offset |
 | 12 | 4 | CRC-32 |
-| 16 | 8 | Page LSN, zero in Phase 1, reserved for future WAL |
+| 16 | 8 | Page LSN, zero for current heap operations; buffer hook supports logged pages |
 
 ## Superblock (page 0)
 
@@ -82,6 +82,13 @@ primary keys will be enforced by the future B+ tree/table layer.
 
 ## I/O and durability boundary
 
+The on-disk v1 format is unchanged in Phase 2. Heap data I/O now goes through
+the bounded buffer pool (see buffer-pool.md), while allocation and generation
+metadata retain their direct, nontransactional writes. Heap `sync()`/`close()`
+flush the pool before synchronizing/closing the disk file. Unflushed heap changes
+are discarded on destruction; even read-after-write success in one process
+does not establish durability.
+
 `pread`/`pwrite` retry EINTR and loop over short transfers. EOF inside a page is
 corruption; write or sync failure throws `Error` and poisons the handle. Once
 poisoned, all ordinary operations fail and the destructor closes the descriptor.
@@ -95,7 +102,7 @@ Advisory exclusive flock excludes other cooperating owners, including a second
 handle in the same process. Do not share a live handle across fork or replace,
 truncate, or mutate its file through other software.
 
-There is no crash-atomic mutation in Phase 1: allocation and generation changes
+There is no crash-atomic mutation in Phases 1–2: allocation and generation changes
 write more than one page, and a single page write can tear. A failed write can
 leave a file that will not reopen. No automatic repair, transaction rollback or
 power-loss durability of unsynchronized calls is promised. WAL must intercept

@@ -1,20 +1,23 @@
 # TinyDB — disk-backed database engine in C++20
 
-An incremental implementation of database internals on Linux. **Phase 1 (storage
-foundation) is implemented.** The buffer pool, B+ tree, transactions, WAL,
-recovery, interactive CLI and benchmarks are planned milestones, not available
-features. This milestone makes no ACID or crash-recovery claim.
+An incremental implementation of database internals on Linux. **Phases 1 and 2
+(storage foundation and buffer pool) are implemented.** B+ trees, transactions,
+WAL, recovery, the interactive CLI and benchmarks are planned milestones, not
+available features. This milestone makes no ACID or crash-recovery claim.
 
-The storage foundation provides:
+The engine currently provides:
 
 - Persistent 4096-byte pages with explicit little-endian encoding and CRC-32.
 - Page allocation and a free-page chain that survives reopen.
 - Slotted heap records with insert, read, variable-length update, delete and scan.
 - Stable record IDs with generation checks against stale slot/page reuse.
 - Checked POSIX I/O, explicit sync/close, and exclusive file ownership.
+- A bounded CLOCK page cache, RAII pin guards, shared/exclusive page latches,
+  dirty tracking, cache statistics, and a WAL-before-page-write callback contract.
 - A typed integer-key/name/integer-balance codec and a persistent storage demo.
 - GoogleTest coverage of boundaries, random CRUD, concurrency, reopen, subprocess
-  exit, corruption detection, and real partial-write failure.
+  exit, corruption detection, real write failure, pin exhaustion, eviction and
+  WAL force ordering/failure.
 
 ## Build and test
 
@@ -78,7 +81,7 @@ A minimal API example:
 #include "storage/heap_file.h"
 #include "storage/record.h"
 
-tinydb::HeapFile heap("accounts.db");
+tinydb::HeapFile heap("accounts.db", 64); // Number of buffer frames (default 64).
 auto rid = heap.insert(tinydb::serialize({1, "Alice", 1000}));
 heap.update(rid, tinydb::serialize({1, "Alice", 800}));
 auto row = tinydb::deserialize(heap.get(rid));
@@ -90,22 +93,27 @@ Records must contain 1–4052 bytes. An update that cannot fit on its current pa
 returns `ErrorCode::PageFull` and preserves the old value. Reads/deletes/updates
 of stale IDs return `NotFound`. Duplicate typed keys are currently permitted.
 `scan()` copies the entire heap into memory. Individual heap calls serialize
-under a mutex; a sequence of calls is not a transaction. Handle write/sync errors
-by stopping use of that handle. `sync()`/`close()` are the checked durability
-boundary; the destructor just closes. An interrupted multi-page operation may
-leave the database unusable until WAL/recovery is implemented.
+under a mutex; a sequence of calls is not a transaction. Heap page reads/writes
+now use the bounded cache. `buffer_stats()` exposes its hit/miss, eviction and
+dirty-write counts. Modified pages can remain only in memory until eviction or
+explicit flush. Handle disk write/sync errors by stopping use of that handle.
+`sync()`/`close()` flush dirty frames and synchronize the file; they are the checked
+durability boundary. Destructors discard unflushed cache contents, so successful
+CRUD calls alone do not promise persistence. An interrupted multi-page operation
+may leave the database unusable until WAL/recovery is implemented.
 
 ## Design and next steps
 
 Read [architecture and milestone gates](docs/architecture.md), the
-[exact storage format](docs/storage-format.md), the jointly planned
+[exact storage format](docs/storage-format.md), the [buffer pool contract](docs/buffer-pool.md), the jointly planned
 [transaction protocol](docs/transactions.md), and [WAL/recovery](docs/recovery.md).
 The initial write-transaction gate is deliberate: full-page undo must not
 clobber another writer's updates. Coarse range locks will prevent phantoms;
 record locks alone will not justify a serializability claim.
 
-The next milestone is a bounded buffer pool with RAII pin guards, CLOCK
-replacement, page latches, and an explicit WAL-before-page-flush hook. It must
-pass its tests before persistent B+ tree work starts. Performance claims and
-benchmark results are deferred until workloads and the relevant subsystems
-exist. See [verification notes](docs/verification.md) for actual test results.
+The next milestone is the persistent B+ tree: integer-key lookup, splits,
+deletion/rebalancing, ordered scans and structural invariants. Buffer pool I/O is
+currently synchronous under one mutex; allocation metadata remains unlogged.
+Performance claims and benchmark results are deferred until workloads and the
+relevant subsystems exist. See [verification notes](docs/verification.md) for
+actual test results.

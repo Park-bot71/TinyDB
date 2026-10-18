@@ -10,6 +10,7 @@ set(TINYDB_GTEST_SOURCE_DIR "" CACHE PATH "Optional local GoogleTest source dire
 
 find_package(Threads REQUIRED)
 add_library(tinydb
+  src/buffer/buffer_pool.cpp
   src/storage/page.cpp
   src/storage/disk_manager.cpp
   src/storage/slotted_page.cpp
@@ -48,5 +49,9 @@ if(BUILD_TESTING)
   target_link_libraries(storage_tests PRIVATE tinydb GTest::gtest_main)
   target_compile_options(storage_tests PRIVATE -Wall -Wextra -Wpedantic)
   include(GoogleTest)
-  gtest_discover_tests(storage_tests DISCOVERY_TIMEOUT 30)
+  gtest_discover_tests(storage_tests DISCOVERY_TIMEOUT 30 PROPERTIES TIMEOUT 30)
+  add_executable(buffer_tests tests/buffer_tests.cpp)
+  target_link_libraries(buffer_tests PRIVATE tinydb GTest::gtest_main)
+  target_compile_options(buffer_tests PRIVATE -Wall -Wextra -Wpedantic)
+  gtest_discover_tests(buffer_tests DISCOVERY_TIMEOUT 30 PROPERTIES TIMEOUT 30)
 endif()

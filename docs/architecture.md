@@ -2,11 +2,11 @@
 
 ## Scope and storage model
 
-Build incrementally in C++20 on Linux. Phase 1 is a persistent, unindexed heap,
-not a transactional database. No ACID, concurrency isolation, or crash-recovery
-claim applies to this milestone. Each phase must pass its own tests before the
-next begins. The later designs below are contracts to implement and verify,
-not implemented features.
+Build incrementally in C++20 on Linux. Phases 1 and 2 implement a persistent,
+unindexed heap and bounded buffer pool. No ACID, transaction isolation, or
+crash-recovery claim applies to this milestone. Each phase must pass its own
+tests before the next begins. Later transaction/index/recovery designs below
+are contracts to implement and verify, not implemented features.
 
 One database file contains a versioned superblock (page 0), 4096-byte heap pages,
 and a persistent free-page chain. Records are opaque nonempty byte strings;
@@ -20,7 +20,7 @@ Heap records initially have no key uniqueness constraint. The future table
 catalog owns separate heaps and B+ tree roots. The index will reject duplicate
 integer keys and map keys to stable heap record IDs. Oversized records are
 rejected; overflow chains, blobs, SQL, MVCC, online DDL, compression, replication,
-and advanced checkpointing are deferred. Phase 1 scans heap pages to find space;
+and advanced checkpointing are deferred. The heap scans pages to find space;
 a free-space directory is a later optimization.
 
 ## Module boundaries and repository
@@ -28,12 +28,13 @@ a free-space directory is a later optimization.
 - `include/common`: errors and explicit little-endian binary encoding.
 - `include/storage`, `src/storage`: page codec, POSIX disk manager, slotted
   pages, heap CRUD, typed record codec.
+- `include/buffer`, `src/buffer`: bounded CLOCK cache and shared/exclusive guards.
 - `tests`: GoogleTest unit/integration tests, real file and process tests.
 - `examples`: runnable persistent storage demonstration.
 - `docs`: format, transaction design, recovery design, milestone gates.
 - `scripts`: reproducible local verification.
 
-Later milestones add `buffer`, `index`, `transaction`, `concurrency`, `recovery`,
+Later milestones add `index`, `transaction`, `concurrency`, `recovery`,
 `src/cli`, and `benchmarks` when they contain working code. Empty modules and
 placeholder implementations are intentionally omitted.
 
@@ -44,14 +45,20 @@ Custom_DB/
 ├── docs/
 │   ├── architecture.md
 │   ├── storage-format.md
+│   ├── buffer-pool.md
 │   ├── transactions.md
 │   ├── recovery.md
 │   └── verification.md
 ├── include/
 │   ├── common/
+│   ├── buffer/
 │   └── storage/
-├── src/storage/
-├── tests/storage_tests.cpp
+├── src/
+│   ├── buffer/
+│   └── storage/
+├── tests/
+│   ├── storage_tests.cpp
+│   └── buffer_tests.cpp
 ├── examples/storage_demo.cpp
 └── scripts/verify.sh
 ```
@@ -64,26 +71,28 @@ ordering, and interrupted recovery. Serialization never dumps C++ structs.
 Checksums detect accidental page damage but cannot repair it. All offsets,
 lengths, IDs, and format versions are validated before use. A failed mutation
 at the I/O layer poisons the open disk manager; callers must stop and reopen.
-Phase 1 cannot repair interrupted multi-page writes.
+The current engine cannot repair interrupted multi-page writes.
 
-Phase 1 serializes heap operations with a mutex. The disk manager also has a
+The heap serializes operations with a mutex. The disk manager also has a
 mutex and takes an exclusive advisory `flock` for the lifetime of its file
-descriptor; multiple owners of one file are rejected. Lock order is heap then
-disk. No caller retains references into internal pages. Low-level page objects
-are owned values, requiring external synchronization if shared.
+descriptor; multiple owners of one file are rejected. Calls use heap, pool, then
+disk synchronization. Page references must not outlive their guards. Low-level
+page values require external synchronization if shared.
 
-In the buffer phase, move heap I/O behind pinned page guards. Guards own page
-latches and unpin via RAII. The pool protects its frame map and replacement
-state; page latches protect page bytes. Eviction cannot choose pinned frames.
+Heap I/O now uses pinned page guards. Guards own page latches and unpin via RAII.
+The pool protects its frame map and replacement state; page latches protect page
+bytes. Eviction cannot choose pinned frames. The pool never waits on a page latch
+while holding its map mutex. Disk I/O is synchronous under that mutex; flushes
+reject pinned frames rather than waiting. See buffer-pool.md for full rules.
 Never wait for a transaction lock while holding a page latch or buffer-map
 mutex. The WAL force path must never acquire page latches.
 
 ## Independently testable milestones
 
-1. **Storage foundation (current):** checked binary format, page allocation and
+1. **Storage foundation (verified):** checked binary format, page allocation and
    reuse, stable slotted records, CRUD, codec, restart tests, invalid inputs,
    full pages, file errors. Gate: CMake build and all GoogleTests pass.
-2. **Buffer pool:** fixed frames, pin/unpin guards, CLOCK, dirty flags,
+2. **Buffer pool (current, verified):** fixed frames, pin/unpin guards, CLOCK, dirty flags,
    page latches, flush callback carrying page LSN. Test eviction, pinned-pool
    exhaustion, concurrent access, and an instrumented WAL-order assertion.
 3. **Persistent B+ tree:** internal/leaf pages, unique integer keys, ordered

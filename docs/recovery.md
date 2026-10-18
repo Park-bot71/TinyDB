@@ -1,7 +1,9 @@
 # WAL and recovery design (planned)
 
-Phase 1 uses direct checked page I/O and explicit `sync()`/`close()`; it has no
-WAL and is not crash atomic. An interrupted update can leave corrupt data or
+Phase 2 adds cached heap pages and explicit flush/sync/close over checked disk
+I/O. Nonzero page LSNs require a WAL-force callback before dirty page writes,
+but no WAL exists yet, heap LSNs are zero, and allocator writes remain direct.
+The engine is not crash atomic. An interrupted update can leave corrupt data or
 inconsistent allocation metadata. Reopening rejects detected inconsistencies;
 this is detection, not recovery. Keep expendable databases until phase 5.
 

@@ -1,7 +1,7 @@
 # Transaction and concurrency design (planned)
 
-Phase 1 implements none of BEGIN/COMMIT/ROLLBACK, transaction locks or isolation.
-Its mutex protects individual heap calls only.
+Phases 1–2 implement none of BEGIN/COMMIT/ROLLBACK, transaction locks or isolation.
+The heap mutex protects individual calls; buffer page latches protect page bytes.
 
 The planned engine uses strict two-phase locking: shared key locks for point
 reads and exclusive key locks for writes, including missing-key/insert probes.

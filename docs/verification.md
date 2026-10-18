@@ -1,4 +1,47 @@
-# Phase 1 verification
+# Verification
+
+## Phase 2 — 2026-10-19
+
+Verified with GCC 13.3.0, CMake 3.28.3 and GoogleTest 1.14.0 on Linux, C++20,
+Debug configuration. **46/46 tests pass** in the normal build and under
+AddressSanitizer + UndefinedBehaviorSanitizer. This includes all 25 Phase 1
+regressions and 21 new buffer/integration tests in `tests/buffer_tests.cpp`.
+Leak detection remains disabled because of the process-traced sandbox:
+`ASAN_OPTIONS=detect_leaks=0 UBSAN_OPTIONS=halt_on_error=1`.
+
+New coverage includes fixed capacity, cache hits, CLOCK second chances, pinned
+victims, pool exhaustion before allocation, RAII and guard moves, exception
+unpinning, dirty/clean eviction, explicit flush and close, pinned-flush rejection,
+invalid requests, page deletion/reuse, LSN regression and invalid image rejection,
+and guard lifetime beyond pool destruction. No test requires a mock disk manager.
+
+WAL hook tests inspect the real data file inside the force callback, proving that
+the old page is still on disk before force returns. Tests also verify that a
+nonzero LSN with no provider cannot be written, a failed force retains the dirty
+resident page, and retry can later complete eviction. This verifies the buffer
+ordering contract, not an implemented WAL or log durability.
+
+Concurrency tests hold two shared readers while an exclusive writer is pinned
+and waiting, perform 400 increments by four writers on one page with no lost
+updates, and perform another 400 increments across six pages through two frames
+while a separate thread flushes. The last workload retries `Busy` without keeping
+other guards. A 500-operation randomized cache workload (seed `20261019`) checks
+contents through eviction and final reopen. A six-page heap test uses a single
+frame, updates and reuses a freed page, synchronizes, and reopens with valid IDs.
+
+A forked child uses `RLIMIT_FSIZE` to force a real dirty-page write failure. It
+verifies that the pool retains dirty state and rejects subsequent cache hits
+with `Io`. The parent verifies the unchanged on-disk contents. Existing subprocess
+sync/exit and partial-page-write tests also pass through the updated code.
+The storage demo was also run in two separate invocations against one new file;
+`diff` confirmed identical persisted records and IDs after the cache integration.
+
+The same reproduction commands below build and run both test executables.
+See [buffer-pool.md](buffer-pool.md) for lifecycle and synchronization limits.
+No transaction, B+ tree, WAL/recovery, throughput or speedup claim follows from
+these correctness tests.
+
+## Phase 1 — 2026-10-18
 
 Verified on 2026-10-18 with GCC 13.3.0, CMake 3.28.3, GoogleTest 1.14.0,
 C++20, Linux, Debug configuration. CMake/GoogleTest packages were extracted to

@@ -3,54 +3,66 @@
 #include "common/error.h"
 
 namespace tinydb {
-HeapFile::HeapFile(const std::filesystem::path& path) : disk_(path) {
-  for (const auto id : disk_.allocated_pages()) SlottedPage(disk_.read_page(id)).validate();
+HeapFile::HeapFile(const std::filesystem::path& path, std::size_t buffer_frames)
+    : disk_(path), pool_(disk_, buffer_frames) {
+  for (const auto id : pool_.allocated_pages()) {
+    const auto guard = pool_.fetch_read(id);
+    SlottedPage(guard.page()).validate();
+  }
 }
 RecordId HeapFile::insert(std::span<const std::byte> record) {
   if (record.empty() || record.size() > SlottedPage::kMaxRecordSize)
     throw Error(ErrorCode::InvalidArgument, "record must contain 1..4052 bytes");
   std::lock_guard lock(mutex_);
-  for (const auto id : disk_.allocated_pages()) {
-    SlottedPage page(disk_.read_page(id));
+  for (const auto id : pool_.allocated_pages()) {
+    auto guard = pool_.fetch_write(id);
+    SlottedPage page(guard.page());
     if (page.can_insert(record.size())) {
-      const auto rid = page.insert(record, disk_.reserve_generation());
-      disk_.write_page(page.page());
+      const auto rid = page.insert(record, pool_.reserve_generation());
+      guard.replace(page.page());
       return rid;
     }
   }
-  const auto id = disk_.allocate_page();
-  SlottedPage page(disk_.read_page(id));
-  const auto rid = page.insert(record, disk_.reserve_generation());
-  disk_.write_page(page.page());
+  auto guard = pool_.new_page();
+  SlottedPage page(guard.page());
+  const auto rid = page.insert(record, pool_.reserve_generation());
+  guard.replace(page.page());
   return rid;
 }
 Bytes HeapFile::get(RecordId id) const {
   std::lock_guard lock(mutex_);
-  return SlottedPage(disk_.read_page(id.page)).get(id);
+  const auto guard = pool_.fetch_read(id.page);
+  return SlottedPage(guard.page()).get(id);
 }
 void HeapFile::update(RecordId id, std::span<const std::byte> record) {
   std::lock_guard lock(mutex_);
-  SlottedPage page(disk_.read_page(id.page));
+  auto guard = pool_.fetch_write(id.page);
+  SlottedPage page(guard.page());
   page.update(id, record);
-  disk_.write_page(page.page());
+  guard.replace(page.page());
 }
 void HeapFile::erase(RecordId id) {
   std::lock_guard lock(mutex_);
-  SlottedPage page(disk_.read_page(id.page));
+  auto guard = pool_.fetch_write(id.page);
+  SlottedPage page(guard.page());
   page.erase(id);
-  if (page.live_count() == 0) disk_.deallocate_page(id.page);
-  else disk_.write_page(page.page());
+  if (page.live_count() == 0) {
+    guard.drop();
+    pool_.delete_page(id.page);
+  } else guard.replace(page.page());
 }
 std::vector<std::pair<RecordId, Bytes>> HeapFile::scan() const {
   std::lock_guard lock(mutex_);
   std::vector<std::pair<RecordId, Bytes>> result;
-  for (const auto id : disk_.allocated_pages()) {
-    SlottedPage page(disk_.read_page(id));
+  for (const auto id : pool_.allocated_pages()) {
+    const auto guard = pool_.fetch_read(id);
+    SlottedPage page(guard.page());
     for (const auto rid : page.records()) result.emplace_back(rid, page.get(rid));
   }
   return result;
 }
-PageId HeapFile::page_count() const { std::lock_guard lock(mutex_); return disk_.page_count(); }
-void HeapFile::sync() { std::lock_guard lock(mutex_); disk_.sync(); }
-void HeapFile::close() { std::lock_guard lock(mutex_); disk_.close(); }
+PageId HeapFile::page_count() const { std::lock_guard lock(mutex_); return pool_.page_count(); }
+BufferPoolStats HeapFile::buffer_stats() const { std::lock_guard lock(mutex_); return pool_.stats(); }
+void HeapFile::sync() { std::lock_guard lock(mutex_); pool_.sync(); }
+void HeapFile::close() { std::lock_guard lock(mutex_); pool_.close(); disk_.close(); }
 }  // namespace tinydb
