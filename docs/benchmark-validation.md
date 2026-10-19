@@ -4,47 +4,37 @@
 python3 scripts/validate_benchmarks.py
 ```
 
-Requires CMake, a C++20 compiler, GoogleTest, Python 3.9+ and Linux tools
-(`lscpu`, `free`, `df`). Use `--gtest-source /path/to/googletest` if needed.
-The driver builds Release, runs correctness tests and saves
-[results.csv](../benchmarks/results.csv), [report.md](../benchmarks/report.md)
-and raw evidence. Each run uses a fresh temporary database directory.
+Requires Linux, CMake, a C++20 compiler, GoogleTest and Python 3.9+.
+Use `--gtest-source /path/to/googletest` for a local GoogleTest checkout.
+The driver builds Release, runs tests and saves [CSV](../benchmarks/results.csv),
+[a report](../benchmarks/report.md) and raw evidence using fresh databases.
 
-## Default workloads
-
-| Workload | Configuration |
+| Workload | Default |
 | --- | --- |
-| Lookup | 1K, 10K, 100K, 1M records; 10,000 identical-key requests per method |
+| Lookup | 1K, 10K, 100K, 1M rows; 10,000 requests per method |
 | Transactions | 1, 2, 4, 8, 16, 32, 64, 100 workers; 100 transfers each |
-| Buffer pool | 1, 16, 64, 128 frames; 10,000 real page fetches each |
-| Recovery | 16 separate-process crash points; two verified restarts per case |
+| Buffer | 1, 16, 64, 128 frames; 10,000 fetches each |
+| Recovery | 16 process-crash scenarios; two verified restarts each |
 
-Lookup compares index-plus-heap reads against the existing full-heap-copy scan.
-Both validate the dataset and warm the same first 1000 probes; OS caches are not
-dropped. Per-request timings include decoding and correctness checks. Throughput
-uses total loop time; setup, warmup and final validation are excluded. Medians and
-speedups are checked against retained samples and matching keys.
+Lookup methods use identical keys and 1000 warmup probes; OS caches stay warm.
+Indexed reads fetch the heap record; sequential reads copy and filter the full
+heap. Timing includes decoding and result checks, excluding setup and warmup.
+Median latency uses individual samples; throughput uses total loop time.
 
-Transaction timing includes BEGIN, two updates and durable COMMIT. Exact balances,
-locks and tree invariants are checked before and after reopening. Writers remain
-serialized; this measures contention, not parallel-write scaling. Cache counters
-exclude allocator I/O and OS caches.
+Transfers include two updates and durable commit. Balances, locks and tree
+invariants are checked before and after reopening. Writers remain serialized.
+Buffer counters exclude allocator I/O and OS caches.
 
-## Limits and evidence
-
-Setup defaults to 90 seconds per dataset; lookup processes to 240 seconds; other
-phases to 180 seconds. Timeouts are incomplete work, not unsupported capacities.
-No performance is reported for unfinished runs. Exit codes are 0 for all passing,
-1 for failures, and 2 for incomplete/unsupported work.
+Setup, lookup and other phases default to 90, 240 and 180 seconds respectively.
+Timeouts are marked incomplete, with no estimated performance. Exit codes are
+0 for passing, 1 for failure and 2 for incomplete/unsupported work.
 
 ```bash
-# Remove dataset time limits:
+# Disable dataset time limits
 python3 scripts/validate_benchmarks.py --setup-timeout 0 --lookup-timeout 0
-# Rebuild a report from existing evidence, without rerunning benchmarks:
+# Regenerate a report from checked evidence
 python3 scripts/validate_benchmarks.py --render-evidence benchmarks/evidence/TIMESTAMP
 ```
 
-Report regeneration checks CSV values against logs, samples, hashes and JUnit;
-these checks remain active under Python `-O`. Python driver tests run in CTest
-when Python is available, or directly with
-`python3 tests/benchmark_driver_tests.py build-validation/tinydb_validation`.
+Reports are checked against logs, samples, key hashes and JUnit, including under
+Python `-O`. Use `--help` for all options.

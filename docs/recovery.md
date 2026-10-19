@@ -1,56 +1,32 @@
-# WAL and recovery
+# Recovery
 
-Commit forces a persistent COMMIT record before acknowledging success. Data
-pages may still be dirty in memory; restart recovery restores committed state
-before normal heap/index validation.
+Commit saves the COMMIT log record with `fsync` before returning success. Data
+pages may still be cached. On restart, recovery restores committed changes and
+discards unfinished or aborted transactions before validating the database.
 
-## Required files
+**Keep the whole database directory:** `records.db`, `primary.idx`,
+`baseline.heap`, `baseline.index`, `database.wal` and `recovery.meta`.
+Only one database owner may use it. Back it up while closed.
 
-| Files | Role |
-| --- | --- |
-| `records.db`, `primary.idx` | Materialized data; recovery can rebuild these |
-| `baseline.heap`, `baseline.index` | Immutable starting images |
-| `database.wal` | Checksummed transaction and full-page records |
-| `recovery.meta` | Manifest tying the log to its baselines |
+## How it works
 
-Keep the whole directory. Do not delete or rotate the log or baselines; there
-is no checkpoint/log-recycling API. Back up the directory while closed.
-Only one coordinator may own it at a time.
+- The WAL records full page images before and after each change. Log records
+  reach disk before changed data pages, including during eviction.
+- Live rollback saves ABORT before restoring the original pages.
+- Restart rebuilds data files from the unchanged baselines and committed log
+  images. If recovery crashes, the next restart repeats this process safely.
 
-## Write ordering
+## Limits
 
-1. BEGIN starts a logged transaction. UPDATE records contain full before/after
-   page images, transaction chains and stable file/page IDs.
-2. Cache changes are logged before becoming dirty. Eviction forces WAL through
-   the page LSN before writing. Direct allocator/metadata changes also force WAL first.
-3. COMMIT is appended and forced with `fsync` before success is returned.
-4. Live rollback forces ABORT before restoring physical snapshots and discarding
-   cached changes. A crash during rollback is handled on the next open.
+Recovery reads the full history. There are no checkpoints or log recycling;
+log size, startup work and memory grow with use. Do not delete recovery files.
 
-## Restart
+Only an incomplete final log record can be trimmed. A complete corrupt record,
+or damaged/missing log, manifest or baselines, stops recovery. A failed commit
+may have succeeded: reopen and inspect state before retrying.
 
-Recovery validates the manifest, baselines and log; trims only a provably
-incomplete final record; then rebuilds temporary heap/index files from the
-baselines plus **committed after-images in log order**. Aborted and incomplete
-transactions are excluded. Generation high water includes valid loser metadata.
+Tests cover real process crashes and partial writes, not physical power cuts
+or media loss. Durability assumes a local Linux filesystem honoring `fsync`.
+Raw `HeapFile` and `BPlusTree` calls do not provide transaction recovery.
 
-It synchronizes and publishes the rebuilt files, then validates allocator,
-heap and index invariants. If recovery crashes, the next attempt starts again
-from the unchanged baseline and WAL. This is full-history reconstruction,
-not incremental ARIES/CLR undo. Log size, startup I/O and memory grow with history.
-
-## Failure limits
-
-A complete corrupt WAL record is fatal, including the final record. Missing or
-corrupt WAL, manifest or baselines cannot be repaired from data files alone.
-An error after COMMIT was written may leave an indeterminate outcome; stop using
-the owner, reopen and inspect state before retrying.
-
-The protocol assumes exclusive ownership and a local Linux filesystem/device
-honoring `fsync`. Tests cover process exits and partial writes, not physical
-power cuts or arbitrary media loss. Raw storage APIs have no automatic recovery.
-
-The WAL uses a 64-byte header and 80-byte record headers with CRCs and optional
-4096-byte images. See [wal.cpp](../src/recovery/wal.cpp) for exact encoding and
-[verification](verification.md) for crash-test evidence. Fault hooks are test-only
-and must not reenter storage or transaction APIs.
+See [test results](verification.md) and [WAL implementation](../src/recovery/wal.cpp).

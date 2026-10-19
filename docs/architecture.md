@@ -1,45 +1,23 @@
 # Architecture
 
-TinyDB has one fixed-schema table, `accounts`, backed by a heap file and a
-persistent B+ tree. The transaction layer keeps them consistent.
-
-```text
-CLI / C++ client
-      ↓
-Transactions + strict two-phase locks
-      ↓
-Heap records + B+ tree index
-      ↓
-CLOCK buffer pools → disk pages
-      ↘ WAL → restart recovery
-```
-
-## Main components
+TinyDB has one fixed table, `accounts`. The transaction layer keeps its heap
+records and B+ tree index consistent.
 
 | Directory | Responsibility |
 | --- | --- |
-| `src/storage` | 4 KB pages, records, allocation and checked file I/O |
-| `src/buffer` | Fixed cache, CLOCK replacement and page guards |
-| `src/index` | Integer-key B+ tree and ordered scans |
-| `src/concurrency` | Shared/exclusive locks and lock timeouts |
-| `src/transaction` | Commit, rollback and heap/index coordination |
-| `src/recovery` | Full-page WAL and recovery |
-| `src/cli` | Interactive commands and batch input |
-| `tests`, `benchmarks` | Correctness checks and measured workloads |
+| `src/storage` | Pages, records and file I/O |
+| `src/buffer` | Page cache and CLOCK replacement |
+| `src/index` | B+ tree lookups and range scans |
+| `src/concurrency` | Locks and timeouts |
+| `src/transaction` | Commit and rollback |
+| `src/recovery` | WAL and restart recovery |
+| `src/cli` | Interactive and batch commands |
+| `tests`, `benchmarks` | Correctness checks and measurements |
 
-## Important choices
+One writer runs at a time; readers on unrelated keys can proceed. Range reads
+lock the table. Commit saves the WAL to disk; recovery rebuilds committed state
+from a baseline and the retained log. One database owner manages the directory.
 
-- One writer runs at a time. Readers on unrelated keys can proceed.
-- Range reads lock the table to prevent phantoms.
-- Each data file has a bounded cache; pages use checksums and stable record IDs.
-- Commit forces the WAL. Recovery rebuilds committed state from an immutable
-  baseline and the full retained log.
-- One coordinator owns the directory. Raw storage calls do not join transactions.
-
-Lock acquisition order is transaction → logical locks → storage latch →
-heap/index latch → buffer pool → disk. Logical lock waits happen before storage
-or page latches; WAL forcing must not acquire page latches.
-
-For details, see [transactions](transactions.md), [recovery](recovery.md), and
-[the storage format](storage-format.md). SQL, multiple tables, parallel writers,
-MVCC and checkpointing are outside the current scope.
+See [transactions](transactions.md), [recovery](recovery.md) and
+[storage](storage-format.md). SQL, multiple tables, parallel writers, MVCC and
+checkpointing are not implemented.

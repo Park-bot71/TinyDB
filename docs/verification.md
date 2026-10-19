@@ -1,40 +1,28 @@
 # Verification
 
-Recorded on 2026-10-19 with GCC 13.3, CMake 3.28.3 and GoogleTest 1.14 on Linux.
+Recorded on 2026-10-19 with GCC 13.3 and CMake 3.28.3 on Linux.
 
 | Check | Result |
 | --- | --- |
-| Release CTest | 126/126 entries passed: 125 GoogleTests plus the Python driver suite |
-| Python driver | 8 tests passed, including corrupted evidence and Python `-O` checks |
-| ASan/UBSan, new benchmark worker tests | 2/2 passed |
-| Real crash matrix | 16 distinct scenarios passed |
+| Release CTest | 126/126: 125 GoogleTests and the Python driver suite |
+| Python driver | 8 tests passed, including evidence validation |
+| ASan/UBSan, new benchmark worker tests only | 2/2 passed |
+| Real process-crash scenarios | 16 passed |
 
-Tests cover storage boundaries, B+ tree invariants, transaction rollback,
-concurrency, interrupted page writes and restart recovery. Crash tests exec
-separate processes, exit without cleanup and verify exact state after restart.
-
-## Reproduce
+Run checks or rebuild with sanitizers:
 
 ```bash
 scripts/verify.sh
 TINYDB_BUILD_DIR="$PWD/build-sanitize" scripts/verify.sh -DTINYDB_SANITIZERS=ON
-python3 scripts/validate_benchmarks.py
 ```
 
-For a GoogleTest source checkout, add
-`-DTINYDB_GTEST_SOURCE_DIR=/path/to/googletest` to the build/verification command.
-In a process-traced environment, LeakSanitizer may require
-`ASAN_OPTIONS=detect_leaks=0`; no leak-free or race-detector result is claimed.
-The recorded sanitizer result above applies to the new worker tests, not a new
-full-suite sanitizer run.
+For a local GoogleTest checkout, add `-DTINYDB_GTEST_SOURCE_DIR=/path/to/googletest`.
+Under process tracing, LeakSanitizer may require `ASAN_OPTIONS=detect_leaks=0`.
+No leak-free or race-detector result is claimed.
 
-## Benchmark evidence
+The [benchmark report](../benchmarks/report.md) contains raw evidence links.
+1K and 10K datasets completed 10,000 lookups per method. Workers through 100
+completed 22,700 transfers with zero failures. The 100K and 1M setups timed out
+after 90 seconds; their lookups remain incomplete.
 
-The [report](../benchmarks/report.md) and [CSV](../benchmarks/results.csv) retain
-measurements, commands, hardware, individual lookup samples and JUnit links.
-The latest correctness review preserves the original performance observations.
-
-1K and 10K datasets completed 10,000 lookups per method. All worker counts through
-100 passed, totaling 22,700 committed transfers with zero failures. The 100K and
-1M setups hit their 90-second limits; their lookups are incomplete, not estimated.
-See [benchmark options](benchmark-validation.md) to change those limits.
+See [benchmark instructions](benchmark-validation.md) to rerun or change limits.
