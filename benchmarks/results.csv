@@ -1,0 +1,43 @@
+category,name,dataset_size,workers,capacity_per_file,seed,status,correctness,operations,successes,failures,timeouts,seconds,wall_seconds,median_latency_us,throughput_ops_s,median_latency_speedup,throughput_speedup,heap_hits,heap_misses,heap_hit_rate,heap_evictions,index_hits,index_misses,index_hit_rate,index_evictions,details,evidence
+correctness,ctest,,,,,pass,pass,125,125,0,,,40.69230279200019,,,,,,,,,,,,,failed: none; skipped=0; exit=0,evidence/20261019T015353+0530/correctness.xml
+setup,heap_index_prepare,1000,1,64,20261019,pass,pass,1000,,,,0.81582155899999997,0.8654348719992413,,,,,,,,,,,,,,evidence/20261019T015353+0530/prepare-1000-1-64-prepare.log
+lookup,indexed,1000,1,64,20261019,pass,pass,10000,10000,0,,0.90402726700000002,1.166138807999232,89.790000000000006,11061.613255521417,4.2272858892972485,4.262191413525141,10000,0,1,0,20000,0,1,0,1000-probe warmup; OS cache not dropped; keys_sha256=0c1e020d57cefc54ce9e051ba2310ea9c5d1ea4fdb0007632773f6cf20042c81; latency samples retained,evidence/20261019T015353+0530/lookup-1000-1-64-indexed.log
+lookup,sequential,1000,1,64,20261019,pass,pass,10000,10000,0,,3.853137255,4.122354913999516,379.56799999999998,2595.2877715486416,,,110000,0,1,0,0,0,0,0,1000-probe warmup; OS cache not dropped; keys_sha256=0c1e020d57cefc54ce9e051ba2310ea9c5d1ea4fdb0007632773f6cf20042c81; latency samples retained,evidence/20261019T015353+0530/lookup-1000-1-64-sequential.log
+setup,heap_index_prepare,10000,1,64,20261019,pass,pass,10000,,,,31.845677846000001,31.875203827001314,,,,,,,,,,,,,,evidence/20261019T015353+0530/prepare-10000-1-64-prepare.log
+lookup,indexed,10000,1,64,20261019,pass,pass,10000,10000,0,,1.0764508239999999,2.5686563910003315,94.563500000000005,9289.7880488779301,71.15545109899696,62.86803580541456,6348,3652,0.63480000000000003,3652,18681,1319,0.93405000000000005,1319,1000-probe warmup; OS cache not dropped; keys_sha256=403da0e4e1fca45d60929915c6ff2ac925a62c347eaaa249df55adfd015cd777; latency samples retained,evidence/20261019T015353+0530/lookup-10000-1-64-indexed.log
+lookup,sequential,10000,1,64,20261019,pass,pass,10000,10000,0,,67.674348945999995,69.14840107500095,6728.7084999999997,147.76647512308378,,,33,1019967,3.2352941176470585e-05,1019967,0,0,0,0,1000-probe warmup; OS cache not dropped; keys_sha256=403da0e4e1fca45d60929915c6ff2ac925a62c347eaaa249df55adfd015cd777; latency samples retained,evidence/20261019T015353+0530/lookup-10000-1-64-sequential.log
+setup,prepare,100000,1,64,20261019,timed_out,not_completed,,,,,,90.00084451200019,,,,,,,,,,,,,process deadline 90s exceeded,evidence/20261019T015353+0530/prepare-100000-1-64-prepare.log
+lookup,indexed,100000,,64,,not_run,not_completed,,,,,,,,,,,,,,,,,,,dataset preparation did not complete; no latency/throughput/speedup reported,
+lookup,sequential,100000,,64,,not_run,not_completed,,,,,,,,,,,,,,,,,,,dataset preparation did not complete; no latency/throughput/speedup reported,
+setup,prepare,1000000,1,64,20261019,timed_out,not_completed,,,,,,90.00159074699877,,,,,,,,,,,,,process deadline 90s exceeded,evidence/20261019T015353+0530/prepare-1000000-1-64-prepare.log
+lookup,indexed,1000000,,64,,not_run,not_completed,,,,,,,,,,,,,,,,,,,dataset preparation did not complete; no latency/throughput/speedup reported,
+lookup,sequential,1000000,,64,,not_run,not_completed,,,,,,,,,,,,,,,,,,,dataset preparation did not complete; no latency/throughput/speedup reported,
+concurrency,two_account_transfer,2,1,64,20261019,pass,pass,100,100,0,0,0.19185108400000001,0.2643855940004869,,521.23760739345107,,,,,,,,,,,,evidence/20261019T015353+0530/concurrency-2-1-64-concurrency.log
+concurrency,two_account_transfer,2,2,64,20261019,pass,pass,200,200,0,0,0.47812199700000002,0.615574346998983,,418.30328086745607,,,,,,,,,,,,evidence/20261019T015353+0530/concurrency-2-2-64-concurrency.log
+concurrency,two_account_transfer,2,4,64,20261019,pass,pass,400,400,0,0,0.92594477200000003,1.1158925620002265,,431.99120735464339,,,,,,,,,,,,evidence/20261019T015353+0530/concurrency-2-4-64-concurrency.log
+concurrency,two_account_transfer,2,8,64,20261019,pass,pass,800,800,0,0,2.2465077560000002,2.518542198000432,,356.10827421510135,,,,,,,,,,,,evidence/20261019T015353+0530/concurrency-2-8-64-concurrency.log
+concurrency,two_account_transfer,2,16,64,20261019,pass,pass,1600,1600,0,0,3.6661215949999999,4.221058462000656,,436.42851404114435,,,,,,,,,,,,evidence/20261019T015353+0530/concurrency-2-16-64-concurrency.log
+concurrency,two_account_transfer,2,32,64,20261019,pass,pass,3200,3200,0,0,7.3141585530000004,8.32912434500031,,437.50760621500024,,,,,,,,,,,,evidence/20261019T015353+0530/concurrency-2-32-64-concurrency.log
+concurrency,two_account_transfer,2,64,64,20261019,pass,pass,6400,6400,0,0,15.561217904999999,17.696457777999967,,411.27886255892645,,,,,,,,,,,,evidence/20261019T015353+0530/concurrency-2-64-64-concurrency.log
+concurrency,two_account_transfer,2,100,64,20261019,pass,pass,10000,10000,0,0,51.110842900000002,54.517539651000334,,195.65320062448041,,,,,,,,,,,,evidence/20261019T015353+0530/concurrency-2-100-64-concurrency.log
+buffer,hot16_scan128,128,1,1,20261019,pass,pass,10000,,,,,0.6649300680001033,,,,,0,10000,0,9999,,,,,,evidence/20261019T015353+0530/buffer-128-1-1-buffer.log
+buffer,hot16_scan128,128,1,16,20261019,pass,pass,10000,,,,,0.5147366550008883,,,,,4992,5008,0.49919999999999998,4992,,,,,,evidence/20261019T015353+0530/buffer-128-1-16-buffer.log
+buffer,hot16_scan128,128,1,64,20261019,pass,pass,10000,,,,,0.514855486999295,,,,,4992,5008,0.49919999999999998,4944,,,,,,evidence/20261019T015353+0530/buffer-128-1-64-buffer.log
+buffer,hot16_scan128,128,1,128,20261019,pass,pass,10000,,,,,0.3644909170016035,,,,,9872,128,0.98719999999999997,0,,,,,,evidence/20261019T015353+0530/buffer-128-1-128-buffer.log
+crash,before_commit,2,1,1,20261019,pass,pass,1,1,0,,0.048444143000000002,0.8154038680004305,,,,,,,,,,,,,,evidence/20261019T015353+0530/crashes-2-1-1-crashes.log
+crash,between_updates,2,1,1,20261019,pass,pass,1,1,0,,0.042718777999999999,0.8154038680004305,,,,,,,,,,,,,,evidence/20261019T015353+0530/crashes-2-1-1-crashes.log
+crash,commit.after_force,2,1,1,20261019,pass,pass,1,1,0,,0.044403972999999999,0.8154038680004305,,,,,,,,,,,,,,evidence/20261019T015353+0530/crashes-2-1-1-crashes.log
+crash,acknowledged_no_close,2,1,1,20261019,pass,pass,1,1,0,,0.048213365000000001,0.8154038680004305,,,,,,,,,,,,,,evidence/20261019T015353+0530/crashes-2-1-1-crashes.log
+crash,data.heap.after_half_write,2,1,1,20261019,pass,pass,1,1,0,,0.042190048000000001,0.8154038680004305,,,,,,,,,,,,,,evidence/20261019T015353+0530/crashes-2-1-1-crashes.log
+crash,torn_after_commit,2,1,1,20261019,pass,pass,1,1,0,,0.045131551999999998,0.8154038680004305,,,,,,,,,,,,,,evidence/20261019T015353+0530/crashes-2-1-1-crashes.log
+crash,abort.after_force,2,1,1,20261019,pass,pass,1,1,0,,0.042997845999999999,0.8154038680004305,,,,,,,,,,,,,,evidence/20261019T015353+0530/crashes-2-1-1-crashes.log
+crash,torn_during_abort,2,1,1,20261019,pass,pass,1,1,0,,0.080343452999999995,0.8154038680004305,,,,,,,,,,,,,,evidence/20261019T015353+0530/crashes-2-1-1-crashes.log
+crash,wal.begin.after_half_frame,2,1,1,20261019,pass,pass,1,1,0,,0.043220148,0.8154038680004305,,,,,,,,,,,,,,evidence/20261019T015353+0530/crashes-2-1-1-crashes.log
+crash,wal.update.after_half_frame,2,1,1,20261019,pass,pass,1,1,0,,0.045233773999999997,0.8154038680004305,,,,,,,,,,,,,,evidence/20261019T015353+0530/crashes-2-1-1-crashes.log
+crash,wal.commit.after_half_frame,2,1,1,20261019,pass,pass,1,1,0,,0.045903526,0.8154038680004305,,,,,,,,,,,,,,evidence/20261019T015353+0530/crashes-2-1-1-crashes.log
+crash,recovery.after_baseline,2,1,1,20261019,pass,pass,1,1,0,,0.049967259999999999,0.8154038680004305,,,,,,,,,,,,,,evidence/20261019T015353+0530/crashes-2-1-1-crashes.log
+crash,recovery.redo_page,2,1,1,20261019,pass,pass,1,1,0,,0.048104666999999997,0.8154038680004305,,,,,,,,,,,,,,evidence/20261019T015353+0530/crashes-2-1-1-crashes.log
+crash,recovery.after_redo,2,1,1,20261019,pass,pass,1,1,0,,0.052429254000000002,0.8154038680004305,,,,,,,,,,,,,,evidence/20261019T015353+0530/crashes-2-1-1-crashes.log
+crash,recovery.after_half_page,2,1,1,20261019,pass,pass,1,1,0,,0.049425636000000002,0.8154038680004305,,,,,,,,,,,,,,evidence/20261019T015353+0530/crashes-2-1-1-crashes.log
+crash,recovery.after_publish_heap,2,1,1,20261019,pass,pass,1,1,0,,0.050472517000000001,0.8154038680004305,,,,,,,,,,,,,,evidence/20261019T015353+0530/crashes-2-1-1-crashes.log
+correctness,ctest_review,,,,,pass,pass,126,126,0,,,,,,,,,,,,,,,,Fresh Release review includes the integrated Python driver tests; original performance samples retained,evidence/20261019T015353+0530/review/correctness.xml

@@ -1,0 +1,71 @@
+[  4%] Building CXX object CMakeFiles/tinydb.dir/src/recovery/wal.cpp.o
+[  4%] Building CXX object googletest/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o
+[  6%] Building CXX object CMakeFiles/tinydb.dir/src/concurrency/lock_manager.cpp.o
+[  8%] Building CXX object CMakeFiles/tinydb.dir/src/transaction/database.cpp.o
+[ 10%] Building CXX object CMakeFiles/tinydb.dir/src/index/index_page.cpp.o
+[ 12%] Building CXX object CMakeFiles/tinydb.dir/src/index/b_plus_tree.cpp.o
+[ 14%] Building CXX object CMakeFiles/tinydb.dir/src/buffer/buffer_pool.cpp.o
+[ 16%] Linking CXX static library ../../lib/libgtest.a
+[ 16%] Built target gtest
+[ 18%] Building CXX object CMakeFiles/tinydb.dir/src/storage/page.cpp.o
+[ 20%] Building CXX object CMakeFiles/tinydb.dir/src/storage/disk_manager.cpp.o
+[ 22%] Building CXX object CMakeFiles/tinydb.dir/src/storage/slotted_page.cpp.o
+[ 25%] Building CXX object CMakeFiles/tinydb.dir/src/storage/heap_file.cpp.o
+[ 27%] Building CXX object CMakeFiles/tinydb.dir/src/storage/record.cpp.o
+[ 29%] Building CXX object googletest/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o
+[ 31%] Linking CXX static library libtinydb.a
+[ 31%] Built target tinydb
+[ 33%] Building CXX object CMakeFiles/storage_demo.dir/examples/storage_demo.cpp.o
+[ 35%] Linking CXX static library ../../lib/libgtest_main.a
+[ 35%] Built target gtest_main
+[ 37%] Building CXX object CMakeFiles/index_demo.dir/examples/index_demo.cpp.o
+[ 39%] Linking CXX executable storage_demo
+[ 39%] Built target storage_demo
+[ 41%] Building CXX object CMakeFiles/transaction_demo.dir/examples/transaction_demo.cpp.o
+[ 43%] Linking CXX executable index_demo
+[ 43%] Built target index_demo
+[ 45%] Building CXX object CMakeFiles/tinydb_cli_support.dir/src/cli/shell.cpp.o
+[ 47%] Linking CXX executable transaction_demo
+[ 47%] Built target transaction_demo
+[ 50%] Building CXX object CMakeFiles/tinydb_bench.dir/benchmarks/benchmark.cpp.o
+[ 52%] Linking CXX static library libtinydb_cli_support.a
+[ 52%] Built target tinydb_cli_support
+[ 54%] Building CXX object CMakeFiles/tinydb_validation.dir/benchmarks/validation_suite.cpp.o
+[ 56%] Linking CXX executable tinydb_bench
+[ 56%] Built target tinydb_bench
+[ 58%] Building CXX object CMakeFiles/storage_tests.dir/tests/storage_tests.cpp.o
+[ 60%] Linking CXX executable tinydb_validation
+[ 60%] Built target tinydb_validation
+[ 62%] Building CXX object CMakeFiles/buffer_tests.dir/tests/buffer_tests.cpp.o
+[ 64%] Linking CXX executable storage_tests
+[ 64%] Built target storage_tests
+[ 66%] Building CXX object CMakeFiles/index_tests.dir/tests/index_tests.cpp.o
+[ 68%] Linking CXX executable buffer_tests
+[ 68%] Built target buffer_tests
+[ 70%] Building CXX object CMakeFiles/transaction_tests.dir/tests/transaction_tests.cpp.o
+[ 72%] Linking CXX executable index_tests
+[ 72%] Built target index_tests
+[ 75%] Building CXX object CMakeFiles/recovery_worker.dir/tests/recovery_worker.cpp.o
+[ 77%] Linking CXX executable recovery_worker
+[ 77%] Built target recovery_worker
+[ 79%] Building CXX object CMakeFiles/stress_tests.dir/tests/stress_tests.cpp.o
+[ 81%] Linking CXX executable transaction_tests
+[ 81%] Built target transaction_tests
+[ 83%] Building CXX object CMakeFiles/validation_tests.dir/tests/validation_tests.cpp.o
+[ 85%] Linking CXX executable stress_tests
+[ 85%] Built target stress_tests
+[ 87%] Building CXX object CMakeFiles/tinydb_shell.dir/src/cli/main.cpp.o
+/home/parth/Desktop/Custom_DB/src/cli/main.cpp: In function ‘void {anonymous}::stop(int)’:
+/home/parth/Desktop/Custom_DB/src/cli/main.cpp:22:18: warning: ignoring return value of ‘ssize_t write(int, const void*, size_t)’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+   22 |     (void)::write(wakeup_fd, &byte, 1);
+      |           ~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+[ 89%] Linking CXX executable tinydb
+[ 89%] Built target tinydb_shell
+[ 91%] Building CXX object CMakeFiles/recovery_tests.dir/tests/recovery_tests.cpp.o
+[ 93%] Linking CXX executable validation_tests
+[ 93%] Built target validation_tests
+[ 95%] Building CXX object CMakeFiles/cli_tests.dir/tests/cli_tests.cpp.o
+[ 97%] Linking CXX executable recovery_tests
+[100%] Linking CXX executable cli_tests
+[100%] Built target recovery_tests
+[100%] Built target cli_tests

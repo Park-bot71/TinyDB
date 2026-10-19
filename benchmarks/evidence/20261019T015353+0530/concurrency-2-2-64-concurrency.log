@@ -1,0 +1,1 @@
+{"capacity_per_file":"64","category":"concurrency","correctness":"pass","dataset_size":"2","details":"","failures":"0","name":"two_account_transfer","operations":"200","seconds":"0.47812199700000002","seed":"20261019","status":"pass","successes":"200","throughput_ops_s":"418.30328086745607","timeouts":"0","workers":"2"}

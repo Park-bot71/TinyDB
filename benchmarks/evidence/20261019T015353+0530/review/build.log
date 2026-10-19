@@ -1,0 +1,22 @@
+-- Configuring done (0.2s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/parth/Desktop/Custom_DB/build-validation
+[  4%] Built target gtest
+[ 29%] Built target tinydb
+[ 33%] Built target gtest_main
+[ 37%] Built target storage_demo
+[ 41%] Built target index_demo
+[ 45%] Built target transaction_demo
+[ 50%] Built target tinydb_cli_support
+[ 54%] Built target tinydb_bench
+[ 58%] Built target tinydb_validation
+[ 62%] Built target storage_tests
+[ 66%] Built target buffer_tests
+[ 70%] Built target index_tests
+[ 75%] Built target transaction_tests
+[ 79%] Built target recovery_worker
+[ 83%] Built target stress_tests
+[ 87%] Built target validation_tests
+[ 91%] Built target tinydb_shell
+[ 95%] Built target recovery_tests
+[100%] Built target cli_tests

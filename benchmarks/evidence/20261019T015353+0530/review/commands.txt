@@ -1,0 +1,5 @@
+cmake -S . -B build-validation -DCMAKE_BUILD_TYPE=Release -DTINYDB_SANITIZERS=OFF -DTINYDB_GTEST_SOURCE_DIR=/tmp/custom-db-tools/root/usr/src/googletest
+cmake --build build-validation --parallel 2
+ctest --test-dir build-validation --output-on-failure --output-junit benchmarks/evidence/20261019T015353+0530/review/correctness.xml
+python3 tests/benchmark_driver_tests.py build-validation/tinydb_validation
+python3 scripts/validate_benchmarks.py --render-evidence benchmarks/evidence/20261019T015353+0530

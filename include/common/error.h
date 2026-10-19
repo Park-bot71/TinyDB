@@ -4,7 +4,10 @@
 #include <string>
 
 namespace tinydb {
-enum class ErrorCode { Io, Corruption, InvalidArgument, NotFound, PageFull, Busy, Closed };
+enum class ErrorCode {
+  Io, Corruption, InvalidArgument, NotFound, PageFull, Busy, Closed,
+  LockTimeout, TransactionAborted, InvalidTransactionState, DuplicateKey, TransactionFailed
+};
 
 class Error : public std::runtime_error {
  public:

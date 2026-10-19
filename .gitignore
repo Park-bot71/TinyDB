@@ -1,4 +1,11 @@
 /build*/
 *.db
+*.idx
 *.wal
 *.core
+baseline.heap
+baseline.index
+recovery.meta
+recovery.meta.tmp
+recovery.heap.tmp
+recovery.index.tmp

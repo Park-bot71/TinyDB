@@ -1,0 +1,12 @@
+-- Configuring done (0.0s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/parth/Desktop/Custom_DB/build-release
+[ 50%] Built target tinydb
+[ 58%] Built target storage_demo
+[ 66%] Built target index_demo
+[ 75%] Built target transaction_demo
+[ 83%] Built target tinydb_cli_support
+[ 95%] Building CXX object CMakeFiles/tinydb_bench.dir/benchmarks/benchmark.cpp.o
+[ 95%] Built target tinydb_shell
+[100%] Linking CXX executable tinydb_bench
+[100%] Built target tinydb_bench

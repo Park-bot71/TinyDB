@@ -1,0 +1,5 @@
+python3 tests/benchmark_driver_tests.py build-validation/tinydb_validation
+cmake -S . -B build-sanitize -DCMAKE_BUILD_TYPE=Debug -DTINYDB_SANITIZERS=ON -DTINYDB_GTEST_SOURCE_DIR=/tmp/custom-db-tools/root/usr/src/googletest
+cmake --build build-sanitize --parallel 2 --target validation_tests
+ASAN_OPTIONS=detect_leaks=0 UBSAN_OPTIONS=halt_on_error=1 ctest --test-dir build-sanitize --output-on-failure -R ^ValidationSuiteTest\.
+python3 scripts/validate_benchmarks.py --render-evidence benchmarks/evidence/20261019T015353+0530

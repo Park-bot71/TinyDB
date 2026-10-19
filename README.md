@@ -1,9 +1,10 @@
 # TinyDB — disk-backed database engine in C++20
 
-An incremental implementation of database internals on Linux. **Phases 1 and 2
-(storage foundation and buffer pool) are implemented.** B+ trees, transactions,
-WAL, recovery, the interactive CLI and benchmarks are planned milestones, not
-available features. This milestone makes no ACID or crash-recovery claim.
+An incremental implementation of database internals on Linux. **All six phases
+(storage, buffer pool, B+ tree, transactions, WAL/recovery, CLI and evaluation)
+are implemented.** The CLI exposes one fixed-schema `accounts` table. Guarantees and filesystem
+assumptions are scoped in the recovery guide; no unrestricted ACID certification
+or media-failure recovery is claimed.
 
 The engine currently provides:
 
@@ -14,10 +15,21 @@ The engine currently provides:
 - Checked POSIX I/O, explicit sync/close, and exclusive file ownership.
 - A bounded CLOCK page cache, RAII pin guards, shared/exclusive page latches,
   dirty tracking, cache statistics, and a WAL-before-page-write callback contract.
+- A persistent unique integer-key B+ tree with leaf/internal pages, splits,
+  deletion with redistribution/merging, root changes, and ordered range scans.
+- A single-table transaction API coordinating heap and index, strict two-phase
+  key/table locking, multi-operation physical rollback, and lock timeout aborts.
+- Checksummed full-page WAL, forced commit, page-LSN flush ordering, and restart-safe
+  recovery of committed state after real process crashes and torn data writes.
 - A typed integer-key/name/integer-balance codec and a persistent storage demo.
+- An interactive/batch command shell with explicit transactions, autocommit,
+  quoted names, ordered queries, diagnostics and checked graceful shutdown.
+- Reproducible Release benchmarks for raw CRUD/index access, durable transactions,
+  concurrent clients, cache hit rates and recovery versus retained log size.
 - GoogleTest coverage of boundaries, random CRUD, concurrency, reopen, subprocess
   exit, corruption detection, real write failure, pin exhaustion, eviction and
-  WAL force ordering/failure.
+  WAL force ordering/failure, B+ tree invariants against `std::map`, and separate
+  exec'd-process crash/recovery tests.
 
 ## Build and test
 
@@ -60,7 +72,50 @@ export LD_LIBRARY_PATH="/tmp/custom-db-tools/root/usr/lib/x86_64-linux-gnu${LD_L
 scripts/verify.sh -DTINYDB_GTEST_SOURCE_DIR=/tmp/custom-db-tools/root/usr/src/googletest
 ```
 
-## Try persistence
+## Use the CLI
+
+```bash
+./build/tinydb /tmp/tinydb-accounts
+# Or use a fresh directory for the scripted transfer/rollback demonstration:
+./build/tinydb /tmp/tinydb-example --batch < examples/accounts.tdb
+```
+
+```text
+CREATE TABLE accounts
+BEGIN
+INSERT accounts 1 "Alice" 1000
+INSERT accounts 2 "Bob" 500
+COMMIT
+SELECT accounts *
+EXIT
+```
+
+Commands outside BEGIN autocommit. EOF/EXIT/SIGINT/SIGTERM roll back unfinished
+transactions and close; storage failures stop the session for recovery. CREATE
+acknowledges the fixed table; dynamic schemas and multiple tables remain deferred.
+See the [CLI grammar and error semantics](docs/cli.md).
+
+## Try persistence through C++
+
+For the coordinated transaction API, run:
+
+```bash
+./build/transaction_demo /tmp/tinydb-accounts
+./build/transaction_demo /tmp/tinydb-accounts
+```
+
+The demo commits both account updates, rolls back two temporary updates, then
+prints Alice with 800 and Bob with 700. Both runs preserve those balances. The
+API is in [transaction/database.h](include/transaction/database.h); the full
+[transaction guide](docs/transactions.md) explains isolation and failure behavior.
+Commit forces the WAL before success; dirty data pages may still be in memory.
+On reopen, recovery reconstructs committed state before normal storage validation.
+It keeps an immutable baseline and the entire WAL, so startup cost and log size
+grow with history. Read the [recovery protocol and limits](docs/recovery.md).
+Keep the whole database directory: `database.wal`, `recovery.meta`, both baseline
+files and the materialized data files. Do not remove the log to reclaim space.
+
+Raw storage examples remain available:
 
 ```bash
 ./build/storage_demo /tmp/tinydb-demo.db
@@ -74,6 +129,17 @@ record IDs. The demo does not add another copy when reopened:
 1 | Alice | 1000 [RID 1:0:1]
 2 | Bob | 500 [RID 1:1:2]
 ```
+
+The index demo connects a separate persisted index to actual heap record IDs:
+
+```bash
+./build/index_demo /tmp/accounts.db /tmp/accounts.idx
+./build/index_demo /tmp/accounts.db /tmp/accounts.idx
+```
+
+Both runs print Alice, Bob and Carol in key order. The demo uses two independent
+files; their updates are not yet transactional. See the [B+ tree guide](docs/b-plus-tree.md)
+for index insertion, lookup, deletion, range scans, format and limitations.
 
 A minimal API example:
 
@@ -99,21 +165,64 @@ dirty-write counts. Modified pages can remain only in memory until eviction or
 explicit flush. Handle disk write/sync errors by stopping use of that handle.
 `sync()`/`close()` flush dirty frames and synchronize the file; they are the checked
 durability boundary. Destructors discard unflushed cache contents, so successful
-CRUD calls alone do not promise persistence. An interrupted multi-page operation
-may leave the database unusable until WAL/recovery is implemented.
+CRUD calls alone do not promise persistence. These raw APIs remain outside WAL
+and can leave unusable files after interrupted writes; use `TransactionalDatabase`
+for coordinated logged transactions and recovery.
 
-## Design and next steps
+## Run benchmarks
+
+The comprehensive benchmark/correctness suite writes **`benchmarks/results.csv`**
+and **[`benchmarks/report.md`](benchmarks/report.md)**:
+
+```bash
+python3 scripts/validate_benchmarks.py
+# Optional local GoogleTest sources:
+python3 scripts/validate_benchmarks.py \
+  --gtest-source /tmp/custom-db-tools/root/usr/src/googletest
+```
+
+It builds Release, runs the complete correctness suite, then attempts 1K/10K/100K/1M
+record datasets with at least 10,000 identical-key lookups per method, workers
+1/2/4/8/16/32/64/100, a buffer-capacity sweep, and 16 distinct exec'd-process crash
+points. It retains individual lookup latencies, commands, JUnit, compiler/hardware
+metadata and worker logs under `benchmarks/evidence`. Completed comparisons report
+measured medians, throughput and speedup; timed-out setup/scan runs are explicitly
+incomplete and receive no projected performance values. Defaults limit setup to
+90 seconds per dataset and lookup processes to 240 seconds; pass
+`--setup-timeout 0 --lookup-timeout 0` to disable those limits. Exit status is 0
+for a complete pass, 1 for failed validation/transactions, or 2 for incomplete or
+unsupported work. See [the suite methodology](docs/benchmark-validation.md).
+
+The original small throughput/recovery-history harness remains available:
+
+```bash
+scripts/benchmark.sh /tmp/tinydb-results \
+  --rows 400 --lookups 200 --transactions 30 --recovery-transactions 200 \
+  --clients 4 --frames 4 --seed 20261019
+```
+
+The script builds Release, runs three fresh-process repetitions, records hardware
+and configuration, and writes CSV plus median/range summaries. It requires a new
+output directory and Python 3; it never removes existing data. Read the
+[benchmark methodology](docs/benchmarks.md) and
+[measured results with raw CSV](docs/benchmark-results/2026-10-19/report.md).
+Raw lookup throughput and durable transaction throughput have different guarantees.
+
+## Design and remaining limits
 
 Read [architecture and milestone gates](docs/architecture.md), the
-[exact storage format](docs/storage-format.md), the [buffer pool contract](docs/buffer-pool.md), the jointly planned
+[exact storage format](docs/storage-format.md), the [buffer pool contract](docs/buffer-pool.md),
+the [persistent B+ tree](docs/b-plus-tree.md), the
 [transaction protocol](docs/transactions.md), and [WAL/recovery](docs/recovery.md).
 The initial write-transaction gate is deliberate: full-page undo must not
-clobber another writer's updates. Coarse range locks will prevent phantoms;
+clobber another writer's updates. Coarse range locks prevent phantoms;
 record locks alone will not justify a serializability claim.
 
-The next milestone is the persistent B+ tree: integer-key lookup, splits,
-deletion/rebalancing, ordered scans and structural invariants. Buffer pool I/O is
-currently synchronous under one mutex; allocation metadata remains unlogged.
-Performance claims and benchmark results are deferred until workloads and the
-relevant subsystems exist. See [verification notes](docs/verification.md) for
-actual test results.
+The six planned milestones are implemented and verified; dynamic tables/catalogs,
+SQL, MVCC, parallel writers and production hardening remain outside this scope.
+Recovery rebuilds from an immutable baseline plus all committed log history;
+incremental checkpoints, compensation logging and log truncation are deferred.
+`TransactionalDatabase` maintains heap/index consistency with WAL. Raw heap/index
+operations remain the caller's responsibility.
+Benchmarks report measured small-workload results with their cache/durability
+limits. See [verification notes](docs/verification.md) for actual test results.

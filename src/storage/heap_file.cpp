@@ -1,6 +1,7 @@
 #include "storage/heap_file.h"
 
 #include "common/error.h"
+#include "recovery/wal.h"
 
 namespace tinydb {
 HeapFile::HeapFile(const std::filesystem::path& path, std::size_t buffer_frames)
@@ -65,4 +66,15 @@ PageId HeapFile::page_count() const { std::lock_guard lock(mutex_); return pool_
 BufferPoolStats HeapFile::buffer_stats() const { std::lock_guard lock(mutex_); return pool_.stats(); }
 void HeapFile::sync() { std::lock_guard lock(mutex_); pool_.sync(); }
 void HeapFile::close() { std::lock_guard lock(mutex_); pool_.close(); disk_.close(); }
+void HeapFile::begin_undo() { std::lock_guard lock(mutex_); pool_.sync(); disk_.begin_undo(); }
+void HeapFile::commit_undo() { std::lock_guard lock(mutex_); disk_.commit_undo(); }
+void HeapFile::rollback_undo() {
+  std::lock_guard lock(mutex_);
+  disk_.rollback_undo();
+  pool_.discard_all();
+}
+void HeapFile::attach_wal(std::shared_ptr<Wal> wal) {
+  std::lock_guard lock(mutex_); pool_.sync();
+  disk_.attach_wal(wal, kHeapFileId); pool_.attach_wal(std::move(wal), kHeapFileId);
+}
 }  // namespace tinydb

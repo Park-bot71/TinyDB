@@ -1,0 +1,256 @@
+Internal ctest changing into directory: /home/parth/Desktop/Custom_DB/build-validation
+Test project /home/parth/Desktop/Custom_DB/build-validation
+        Start   1: PageTest.HeaderRoundTripAndEveryByteCoveredByChecksum
+  1/125 Test   #1: PageTest.HeaderRoundTripAndEveryByteCoveredByChecksum ...............................   Passed    0.13 sec
+        Start   2: RecordTest.PortableRoundTripWithSignedExtremesAndEmbeddedNull
+  2/125 Test   #2: RecordTest.PortableRoundTripWithSignedExtremesAndEmbeddedNull .......................   Passed    0.00 sec
+        Start   3: RecordTest.RejectsInvalidLengthVersionAndOversizedNames
+  3/125 Test   #3: RecordTest.RejectsInvalidLengthVersionAndOversizedNames .............................   Passed    0.00 sec
+        Start   4: SlottedPageTest.ExactCapacityAndOversizedRecords
+  4/125 Test   #4: SlottedPageTest.ExactCapacityAndOversizedRecords ....................................   Passed    0.00 sec
+        Start   5: SlottedPageTest.CompactionAndVariableSizeUpdateKeepIdsStable
+  5/125 Test   #5: SlottedPageTest.CompactionAndVariableSizeUpdateKeepIdsStable ........................   Passed    0.00 sec
+        Start   6: SlottedPageTest.FailedUpdateDoesNotChangePage
+  6/125 Test   #6: SlottedPageTest.FailedUpdateDoesNotChangePage .......................................   Passed    0.00 sec
+        Start   7: SlottedPageTest.AllInvalidRecordIdFormsAreRejected
+  7/125 Test   #7: SlottedPageTest.AllInvalidRecordIdFormsAreRejected ..................................   Passed    0.00 sec
+        Start   8: SlottedPageTest.RejectsMalformedLayoutEvenWithValidChecksum
+  8/125 Test   #8: SlottedPageTest.RejectsMalformedLayoutEvenWithValidChecksum .........................   Passed    0.00 sec
+        Start   9: SlottedPageTest.RandomizedOperationsCheckInvariantsAfterEachMutation
+  9/125 Test   #9: SlottedPageTest.RandomizedOperationsCheckInvariantsAfterEachMutation ................   Passed    0.13 sec
+        Start  10: StorageTest.AllocateFreeAndReuseAcrossRestart
+ 10/125 Test  #10: StorageTest.AllocateFreeAndReuseAcrossRestart .......................................   Passed    0.01 sec
+        Start  11: StorageTest.PageWritesPersistAndGenerationsNeverRepeatOnReopen
+ 11/125 Test  #11: StorageTest.PageWritesPersistAndGenerationsNeverRepeatOnReopen ......................   Passed    0.00 sec
+        Start  12: StorageTest.InvalidPagesAndClosedHandlesReportErrors
+ 12/125 Test  #12: StorageTest.InvalidPagesAndClosedHandlesReportErrors ................................   Passed    0.00 sec
+        Start  13: StorageTest.ExclusiveOwnerLockIsReleasedAtClose
+ 13/125 Test  #13: StorageTest.ExclusiveOwnerLockIsReleasedAtClose .....................................   Passed    0.00 sec
+        Start  14: StorageTest.MissingParentAndExistingEmptyFileFailExplicitly
+ 14/125 Test  #14: StorageTest.MissingParentAndExistingEmptyFileFailExplicitly .........................   Passed    0.00 sec
+        Start  15: StorageTest.TruncationAndCorruptChecksumAreRejected
+ 15/125 Test  #15: StorageTest.TruncationAndCorruptChecksumAreRejected .................................   Passed    0.01 sec
+        Start  16: StorageTest.RejectsFreeListCyclesAndOrphans
+ 16/125 Test  #16: StorageTest.RejectsFreeListCyclesAndOrphans .........................................   Passed    0.00 sec
+        Start  17: StorageTest.RejectsBadMetadataVersionCountAndFreeHead
+ 17/125 Test  #17: StorageTest.RejectsBadMetadataVersionCountAndFreeHead ...............................   Passed    0.00 sec
+        Start  18: StorageTest.GenerationExhaustionRejectsInsteadOfWrapping
+ 18/125 Test  #18: StorageTest.GenerationExhaustionRejectsInsteadOfWrapping ............................   Passed    0.00 sec
+        Start  19: StorageTest.HeapCrudPersistenceAndScan
+ 19/125 Test  #19: StorageTest.HeapCrudPersistenceAndScan ..............................................   Passed    0.01 sec
+        Start  20: StorageTest.StaleIdsStayInvalidAfterSlotAndWholePageReuse
+ 20/125 Test  #20: StorageTest.StaleIdsStayInvalidAfterSlotAndWholePageReuse ...........................   Passed    0.01 sec
+        Start  21: StorageTest.FullHeapPagesAllocateAndRejectedUpdatePreservesOriginal
+ 21/125 Test  #21: StorageTest.FullHeapPagesAllocateAndRejectedUpdatePreservesOriginal .................   Passed    0.00 sec
+        Start  22: StorageTest.RandomizedHeapCrudAgainstModelWithRepeatedReopens
+ 22/125 Test  #22: StorageTest.RandomizedHeapCrudAgainstModelWithRepeatedReopens .......................   Passed    0.21 sec
+        Start  23: StorageTest.ConcurrentHeapCallsAreSerializedWithoutLostRecords
+ 23/125 Test  #23: StorageTest.ConcurrentHeapCallsAreSerializedWithoutLostRecords ......................   Passed    0.10 sec
+        Start  24: StorageTest.SyncedRecordsSurviveProcessExitWithoutDestructors
+ 24/125 Test  #24: StorageTest.SyncedRecordsSurviveProcessExitWithoutDestructors .......................   Passed    0.00 sec
+        Start  25: StorageTest.RealPartialWriteFailurePoisonsHandleAndIsDetectedOnReopen
+ 25/125 Test  #25: StorageTest.RealPartialWriteFailurePoisonsHandleAndIsDetectedOnReopen ...............   Passed    0.00 sec
+        Start  26: BufferTest.RejectsZeroFrames
+ 26/125 Test  #26: BufferTest.RejectsZeroFrames ........................................................   Passed    0.00 sec
+        Start  27: BufferTest.RepeatedFetchHitsCacheAndPinsAreReleased
+ 27/125 Test  #27: BufferTest.RepeatedFetchHitsCacheAndPinsAreReleased .................................   Passed    0.00 sec
+        Start  28: BufferTest.ExhaustionAndFlushWithPinnedFramesFailWithoutAllocating
+ 28/125 Test  #28: BufferTest.ExhaustionAndFlushWithPinnedFramesFailWithoutAllocating ..................   Passed    0.00 sec
+        Start  29: BufferTest.GuardMovesAndExceptionUnwindingUnpinExactlyOnce
+ 29/125 Test  #29: BufferTest.GuardMovesAndExceptionUnwindingUnpinExactlyOnce ..........................   Passed    0.00 sec
+        Start  30: BufferTest.DirtyTrackingFlushAndCleanEviction
+ 30/125 Test  #30: BufferTest.DirtyTrackingFlushAndCleanEviction .......................................   Passed    0.00 sec
+        Start  31: BufferTest.ClockSecondChanceAndPinnedVictims
+ 31/125 Test  #31: BufferTest.ClockSecondChanceAndPinnedVictims ........................................   Passed    0.00 sec
+        Start  32: BufferTest.InvalidFetchDoesNotEvictOrLoseDirtyVictim
+ 32/125 Test  #32: BufferTest.InvalidFetchDoesNotEvictOrLoseDirtyVictim ................................   Passed    0.00 sec
+        Start  33: BufferTest.NewAndDeletedPagesRemainCoherentOnReuse
+ 33/125 Test  #33: BufferTest.NewAndDeletedPagesRemainCoherentOnReuse ..................................   Passed    0.00 sec
+        Start  34: BufferTest.FlushAllChecksAllPinsBeforeWritingAnyPage
+ 34/125 Test  #34: BufferTest.FlushAllChecksAllPinsBeforeWritingAnyPage ................................   Passed    0.00 sec
+        Start  35: BufferTest.WalIsForcedBeforeExplicitFlushAndDirtyEviction
+ 35/125 Test  #35: BufferTest.WalIsForcedBeforeExplicitFlushAndDirtyEviction ...........................   Passed    0.00 sec
+        Start  36: BufferTest.NonzeroLsnWithoutWalCallbackCannotReachDisk
+ 36/125 Test  #36: BufferTest.NonzeroLsnWithoutWalCallbackCannotReachDisk ..............................   Passed    0.00 sec
+        Start  37: BufferTest.FailedWalForceRetainsDirtyPageAndCanBeRetried
+ 37/125 Test  #37: BufferTest.FailedWalForceRetainsDirtyPageAndCanBeRetried ............................   Passed    0.00 sec
+        Start  38: BufferTest.ZeroLsnNeedsNoWalForceAndReplacementCannotChangeIdentityOrRegressLsn
+ 38/125 Test  #38: BufferTest.ZeroLsnNeedsNoWalForceAndReplacementCannotChangeIdentityOrRegressLsn .....   Passed    0.00 sec
+        Start  39: BufferTest.CloseFlushesAndRejectsFurtherOperations
+ 39/125 Test  #39: BufferTest.CloseFlushesAndRejectsFurtherOperations ..................................   Passed    0.00 sec
+        Start  40: BufferTest.LiveGuardKeepsFramesAliveAfterPoolDestructionWithoutImplicitFlush
+ 40/125 Test  #40: BufferTest.LiveGuardKeepsFramesAliveAfterPoolDestructionWithoutImplicitFlush ........   Passed    0.00 sec
+        Start  41: BufferTest.SharedReadersCoexistAndWriterWaitsWithoutHoldingPoolMutex
+ 41/125 Test  #41: BufferTest.SharedReadersCoexistAndWriterWaitsWithoutHoldingPoolMutex ................   Passed    0.00 sec
+        Start  42: BufferTest.ConcurrentWritersDoNotLoseUpdates
+ 42/125 Test  #42: BufferTest.ConcurrentWritersDoNotLoseUpdates ........................................   Passed    0.04 sec
+        Start  43: BufferTest.ConcurrentEvictionAndFlushingKeepAllIncrements
+ 43/125 Test  #43: BufferTest.ConcurrentEvictionAndFlushingKeepAllIncrements ...........................   Passed    0.04 sec
+        Start  44: BufferTest.RandomizedCacheWritesSurviveRepeatedEvictionAndReopen
+ 44/125 Test  #44: BufferTest.RandomizedCacheWritesSurviveRepeatedEvictionAndReopen ....................   Passed    0.05 sec
+        Start  45: BufferTest.RealPageWriteErrorPreventsServingCachedPages
+ 45/125 Test  #45: BufferTest.RealPageWriteErrorPreventsServingCachedPages .............................   Passed    0.00 sec
+        Start  46: BufferTest.HeapUsesCacheAndPersistsWithOnlyOneFrame
+ 46/125 Test  #46: BufferTest.HeapUsesCacheAndPersistsWithOnlyOneFrame .................................   Passed    0.01 sec
+        Start  47: IndexPageTest.FullLeafAndInternalPagesRoundTrip
+ 47/125 Test  #47: IndexPageTest.FullLeafAndInternalPagesRoundTrip .....................................   Passed    0.00 sec
+        Start  48: IndexPageTest.SignedExtremesAndHeaderRoundTrip
+ 48/125 Test  #48: IndexPageTest.SignedExtremesAndHeaderRoundTrip ......................................   Passed    0.00 sec
+        Start  49: IndexPageTest.RejectsMalformedCountOrderingReferencesAndReservedFields
+ 49/125 Test  #49: IndexPageTest.RejectsMalformedCountOrderingReferencesAndReservedFields ..............   Passed    0.00 sec
+        Start  50: IndexTest.TypedAllocationPersistsAndCannotChangeType
+ 50/125 Test  #50: IndexTest.TypedAllocationPersistsAndCannotChangeType ................................   Passed    0.00 sec
+        Start  51: IndexTest.EmptyTreeDuplicatesMissingKeysAndInvalidValues
+ 51/125 Test  #51: IndexTest.EmptyTreeDuplicatesMissingKeysAndInvalidValues ............................   Passed    0.01 sec
+        Start  52: IndexTest.IndexPagesUseWalBeforePageFlushOrdering
+ 52/125 Test  #52: IndexTest.IndexPagesUseWalBeforePageFlushOrdering ...................................   Passed    0.00 sec
+        Start  53: IndexTest.AscendingDescendingAndRandomInsertionValidateEveryStep
+ 53/125 Test  #53: IndexTest.AscendingDescendingAndRandomInsertionValidateEveryStep ....................   Passed    3.25 sec
+        Start  54: IndexTest.LeafRedistributionFromBothSides
+ 54/125 Test  #54: IndexTest.LeafRedistributionFromBothSides ...........................................   Passed    0.02 sec
+        Start  55: IndexTest.LeafMergeFromEitherSideCollapsesRoot
+ 55/125 Test  #55: IndexTest.LeafMergeFromEitherSideCollapsesRoot ......................................   Passed    0.02 sec
+        Start  56: IndexTest.InternalRebalancingAndCompleteDeletionCheckEveryInvariant
+ 56/125 Test  #56: IndexTest.InternalRebalancingAndCompleteDeletionCheckEveryInvariant .................   Passed    4.92 sec
+        Start  57: IndexTest.RandomCrudAgainstMapForOddAndEvenCapacities
+ 57/125 Test  #57: IndexTest.RandomCrudAgainstMapForOddAndEvenCapacities ...............................   Passed    3.56 sec
+        Start  58: IndexTest.DefaultCapacitySplitsFullPhysicalLeafPages
+ 58/125 Test  #58: IndexTest.DefaultCapacitySplitsFullPhysicalLeafPages ................................   Passed    1.15 sec
+        Start  59: IndexTest.RangeScansCrossLeavesWithLimitsAndSignedExtremes
+ 59/125 Test  #59: IndexTest.RangeScansCrossLeavesWithLimitsAndSignedExtremes ..........................   Passed    0.24 sec
+        Start  60: IndexTest.ReusesFreedPagesAfterRestartWithoutFileGrowth
+ 60/125 Test  #60: IndexTest.ReusesFreedPagesAfterRestartWithoutFileGrowth .............................   Passed    0.64 sec
+        Start  61: IndexTest.OptionsPersistAndInvalidOptionsDoNotCreateFiles
+ 61/125 Test  #61: IndexTest.OptionsPersistAndInvalidOptionsDoNotCreateFiles ...........................   Passed    0.00 sec
+        Start  62: IndexTest.ClosedTreeRejectsOperationsAndFileKindsCannotBeMixed
+ 62/125 Test  #62: IndexTest.ClosedTreeRejectsOperationsAndFileKindsCannotBeMixed ......................   Passed    0.01 sec
+        Start  63: IndexTest.StartupRejectsStructuralCorruptionWithValidChecksums
+ 63/125 Test  #63: IndexTest.StartupRejectsStructuralCorruptionWithValidChecksums ......................   Passed    0.03 sec
+        Start  64: IndexTest.IndexLookupFindsActualHeapRecordsAcrossRestarts
+ 64/125 Test  #64: IndexTest.IndexLookupFindsActualHeapRecordsAcrossRestarts ...........................   Passed    0.16 sec
+        Start  65: IndexTest.ConcurrentReadersWritersAndScansRemainConsistent
+ 65/125 Test  #65: IndexTest.ConcurrentReadersWritersAndScansRemainConsistent ..........................   Passed    0.55 sec
+        Start  66: IndexTest.SyncedRootAndSplitsSurviveChildExitWithoutDestructors
+ 66/125 Test  #66: IndexTest.SyncedRootAndSplitsSurviveChildExitWithoutDestructors .....................   Passed    0.29 sec
+        Start  67: IndexTest.RealWriteFailurePoisonsIndexInsteadOfAcknowledgingMutation
+ 67/125 Test  #67: IndexTest.RealWriteFailurePoisonsIndexInsteadOfAcknowledgingMutation ................   Passed    0.00 sec
+        Start  68: LockTest.FullCompatibilityMatrixAndInvalidInputs
+ 68/125 Test  #68: LockTest.FullCompatibilityMatrixAndInvalidInputs ....................................   Passed    0.00 sec
+        Start  69: LockTest.SharedCompatibilityAndStrictUpgradeModes
+ 69/125 Test  #69: LockTest.SharedCompatibilityAndStrictUpgradeModes ...................................   Passed    0.00 sec
+        Start  70: LockTest.TimeoutRetainsGrantedLocksUntilCoordinatorReleasesThem
+ 70/125 Test  #70: LockTest.TimeoutRetainsGrantedLocksUntilCoordinatorReleasesThem .....................   Passed    0.03 sec
+        Start  71: LockTest.QueuedWriterIsNotBypassedByNewReaders
+ 71/125 Test  #71: LockTest.QueuedWriterIsNotBypassedByNewReaders ......................................   Passed    0.00 sec
+        Start  72: LockTest.CancelingWaiterDoesNotGrantAnAbortedRegistration
+ 72/125 Test  #72: LockTest.CancelingWaiterDoesNotGrantAnAbortedRegistration ...........................   Passed    0.00 sec
+        Start  73: TransactionTest.DiskUndoRestoresAllocationTypesPayloadAndGenerationHighWater
+ 73/125 Test  #73: TransactionTest.DiskUndoRestoresAllocationTypesPayloadAndGenerationHighWater ........   Passed    0.01 sec
+        Start  74: TransactionTest.CacheDiscardAfterPhysicalUndoAndPinnedRejection
+ 74/125 Test  #74: TransactionTest.CacheDiscardAfterPhysicalUndoAndPinnedRejection .....................   Passed    0.00 sec
+        Start  75: TransactionTest.LifecycleCommitAndRestartPersistenceWithoutDatabaseClose
+ 75/125 Test  #75: TransactionTest.LifecycleCommitAndRestartPersistenceWithoutDatabaseClose ............   Passed    0.03 sec
+        Start  76: TransactionTest.MultiOperationRollbackAndDestructorRollback
+ 76/125 Test  #76: TransactionTest.MultiOperationRollbackAndDestructorRollback .........................   Passed    0.03 sec
+        Start  77: TransactionTest.ErrorAbortsAllPriorChangesAndDatabaseRemainsUsable
+ 77/125 Test  #77: TransactionTest.ErrorAbortsAllPriorChangesAndDatabaseRemainsUsable ..................   Passed    0.03 sec
+        Start  78: TransactionTest.FailedGrowingUpdateRestoresEarlierOperations
+ 78/125 Test  #78: TransactionTest.FailedGrowingUpdateRestoresEarlierOperations ........................   Passed    0.02 sec
+        Start  79: TransactionTest.PhysicalUndoRestoresRootsRecordsRidsAndFileSizesAfterReuse
+ 79/125 Test  #79: TransactionTest.PhysicalUndoRestoresRootsRecordsRidsAndFileSizesAfterReuse ..........   Passed    7.54 sec
+        Start  80: TransactionTest.DirtyPointReadWaitsUntilRollbackAndUnrelatedReadsProceed
+ 80/125 Test  #80: TransactionTest.DirtyPointReadWaitsUntilRollbackAndUnrelatedReadsProceed ............   Passed    0.04 sec
+        Start  81: TransactionTest.ReadsAreRepeatableAndWritesWaitForReaderCommit
+ 81/125 Test  #81: TransactionTest.ReadsAreRepeatableAndWritesWaitForReaderCommit ......................   Passed    0.05 sec
+        Start  82: TransactionTest.MissingKeyReadPreventsInsertUntilTransactionEnds
+ 82/125 Test  #82: TransactionTest.MissingKeyReadPreventsInsertUntilTransactionEnds ....................   Passed    0.04 sec
+        Start  83: TransactionTest.RangeLocksPreventPhantomsEvenForEmptyRanges
+ 83/125 Test  #83: TransactionTest.RangeLocksPreventPhantomsEvenForEmptyRanges .........................   Passed    0.05 sec
+        Start  84: TransactionTest.ScansWaitForWholeMultiRecordCommit
+ 84/125 Test  #84: TransactionTest.ScansWaitForWholeMultiRecordCommit ..................................   Passed    0.04 sec
+        Start  85: TransactionTest.ScanThenWriteUpgradeRetainsRangeProtection
+ 85/125 Test  #85: TransactionTest.ScanThenWriteUpgradeRetainsRangeProtection ..........................   Passed    0.05 sec
+        Start  86: TransactionTest.TimeoutAutomaticallyUndoesEarlierUpdatesAndReleasesLocks
+ 86/125 Test  #86: TransactionTest.TimeoutAutomaticallyUndoesEarlierUpdatesAndReleasesLocks ............   Passed    0.11 sec
+        Start  87: TransactionTest.WriterGateDeadlockIsResolvedByTimeoutAndPhysicalUndo
+ 87/125 Test  #87: TransactionTest.WriterGateDeadlockIsResolvedByTimeoutAndPhysicalUndo ................   Passed    0.21 sec
+        Start  88: TransactionTest.ConcurrentReadModifyWriteHasNoLostUpdates
+ 88/125 Test  #88: TransactionTest.ConcurrentReadModifyWriteHasNoLostUpdates ...........................   Passed    0.21 sec
+        Start  89: TransactionTest.MovesRollbackReplacedTransactionAndHandlesOutliveWrapper
+ 89/125 Test  #89: TransactionTest.MovesRollbackReplacedTransactionAndHandlesOutliveWrapper ............   Passed    0.06 sec
+        Start  90: TransactionTest.CloseAndValidationRejectActiveTransactionsAndClosedBegin
+ 90/125 Test  #90: TransactionTest.CloseAndValidationRejectActiveTransactionsAndClosedBegin ............   Passed    0.03 sec
+        Start  91: TransactionTest.InvalidRangeAbortsEarlierWorkAndBoundsWork
+ 91/125 Test  #91: TransactionTest.InvalidRangeAbortsEarlierWorkAndBoundsWork ..........................   Passed    0.05 sec
+        Start  92: TransactionTest.IndexAllocationFailureUndoesHeapAndFailsDatabaseClosed
+ 92/125 Test  #92: TransactionTest.IndexAllocationFailureUndoesHeapAndFailsDatabaseClosed ..............   Passed    0.04 sec
+        Start  93: TransactionTest.FailedCommitAndFailedUndoNeverReportCommittedOrAllowClients
+ 93/125 Test  #93: TransactionTest.FailedCommitAndFailedUndoNeverReportCommittedOrAllowClients .........   Passed    0.06 sec
+        Start  94: RecoveryTest.CrashBetweenUpdatesAndBeforeCommitUndoesLoser
+ 94/125 Test  #94: RecoveryTest.CrashBetweenUpdatesAndBeforeCommitUndoesLoser ..........................   Passed    0.14 sec
+        Start  95: RecoveryTest.DurableCommitBeforeDataFlushIsRedoneAndIdsAdvance
+ 95/125 Test  #95: RecoveryTest.DurableCommitBeforeDataFlushIsRedoneAndIdsAdvance ......................   Passed    0.11 sec
+        Start  96: RecoveryTest.AcknowledgedCommitWithoutCloseSurvivesProcessExit
+ 96/125 Test  #96: RecoveryTest.AcknowledgedCommitWithoutCloseSurvivesProcessExit ......................   Passed    0.09 sec
+        Start  97: RecoveryTest.TornUncommittedAndCommittedDataPagesAreRepaired
+ 97/125 Test  #97: RecoveryTest.TornUncommittedAndCommittedDataPagesAreRepaired ........................   Passed    0.12 sec
+        Start  98: RecoveryTest.AbortDecisionAndInterruptedPhysicalUndoRemainAborted
+ 98/125 Test  #98: RecoveryTest.AbortDecisionAndInterruptedPhysicalUndoRemainAborted ...................   Passed    0.19 sec
+        Start  99: RecoveryTest.IncompleteWalHeadersPayloadsAndCommitFramesAreTrimmed
+ 99/125 Test  #99: RecoveryTest.IncompleteWalHeadersPayloadsAndCommitFramesAreTrimmed ..................   Passed    1.18 sec
+        Start 100: RecoveryTest.RecoveryCanCrashRepeatedlyDuringRedoAndPublishing
+100/125 Test #100: RecoveryTest.RecoveryCanCrashRepeatedlyDuringRedoAndPublishing ......................   Passed    0.31 sec
+        Start 101: RecoveryTest.UncommittedStructuralChangesRestoreOriginalAndCommittedSplitsPersist
+101/125 Test #101: RecoveryTest.UncommittedStructuralChangesRestoreOriginalAndCommittedSplitsPersist ...   Passed    5.23 sec
+        Start 102: RecoveryTest.TornSuperblocksMissingDataFilesAndBadIndexHeadersAreRepairable
+102/125 Test #102: RecoveryTest.TornSuperblocksMissingDataFilesAndBadIndexHeadersAreRepairable .........   Passed    0.84 sec
+        Start 103: RecoveryTest.CompleteCorruptWalFramesAreNotTreatedAsTornTails
+103/125 Test #103: RecoveryTest.CompleteCorruptWalFramesAreNotTreatedAsTornTails .......................   Passed    0.82 sec
+        Start 104: RecoveryTest.CorruptPayloadAndLostWalOrManifestFailClosed
+104/125 Test #104: RecoveryTest.CorruptPayloadAndLostWalOrManifestFailClosed ...........................   Passed    1.04 sec
+        Start 105: RecoveryTest.ImmutableBaselineCorruptionDoesNotOverwriteData
+105/125 Test #105: RecoveryTest.ImmutableBaselineCorruptionDoesNotOverwriteData ........................   Passed    0.03 sec
+        Start 106: RecoveryTest.WalOwnershipRejectsSecondCoordinatorBeforeRepair
+106/125 Test #106: RecoveryTest.WalOwnershipRejectsSecondCoordinatorBeforeRepair .......................   Passed    0.44 sec
+        Start 107: RecoveryTest.FailedCommitForceNeverReportsSuccessAndOutcomeIsAtomic
+107/125 Test #107: RecoveryTest.FailedCommitForceNeverReportsSuccessAndOutcomeIsAtomic .................   Passed    0.60 sec
+        Start 108: RecoveryTest.AFailureAfterForcedCommitDoesNotUndoTheCommittedDecision
+108/125 Test #108: RecoveryTest.AFailureAfterForcedCommitDoesNotUndoTheCommittedDecision ...............   Passed    0.37 sec
+        Start 109: RecoveryTest.AdoptsExistingUnloggedHeapAndIndexAsNonemptyBaseline
+109/125 Test #109: RecoveryTest.AdoptsExistingUnloggedHeapAndIndexAsNonemptyBaseline ...................   Passed    0.22 sec
+        Start 110: RecoveryTest.DataOnlyCopyWithWalStampsIsNotSilentlyAdopted
+110/125 Test #110: RecoveryTest.DataOnlyCopyWithWalStampsIsNotSilentlyAdopted ..........................   Passed    0.14 sec
+        Start 111: RecoveryTest.RawStorageOwnerPreventsRecoveryFromOverwritingItsFiles
+111/125 Test #111: RecoveryTest.RawStorageOwnerPreventsRecoveryFromOverwritingItsFiles .................   Passed    0.03 sec
+        Start 112: CliTest.AccountTransferRollbackAndRestart
+112/125 Test #112: CliTest.AccountTransferRollbackAndRestart ...........................................   Passed    0.03 sec
+        Start 113: CliTest.EscapesCaseCommentsAndIntegerLimits
+113/125 Test #113: CliTest.EscapesCaseCommentsAndIntegerLimits .........................................   Passed    0.02 sec
+        Start 114: CliTest.SyntaxErrorsDoNotPartiallyExecuteOrAbortActiveWork
+114/125 Test #114: CliTest.SyntaxErrorsDoNotPartiallyExecuteOrAbortActiveWork ..........................   Passed    0.03 sec
+        Start 115: CliTest.EngineErrorAbortsEntireTransactionAndNextCommandAutocommits
+115/125 Test #115: CliTest.EngineErrorAbortsEntireTransactionAndNextCommandAutocommits .................   Passed    0.02 sec
+        Start 116: CliTest.EofAndExitExplicitlyRollbackUnfinishedWork
+116/125 Test #116: CliTest.EofAndExitExplicitlyRollbackUnfinishedWork ..................................   Passed    0.04 sec
+        Start 117: CliTest.RejectsUnknownTablesAndTransactionMisuse
+117/125 Test #117: CliTest.RejectsUnknownTablesAndTransactionMisuse ....................................   Passed    0.01 sec
+        Start 118: CliTest.HelpStatsFlushAndEmptyRanges
+118/125 Test #118: CliTest.HelpStatsFlushAndEmptyRanges ................................................   Passed    0.02 sec
+        Start 119: CliTest.ExecutableBatchReportsErrorsAndPersistsOtherCommands
+119/125 Test #119: CliTest.ExecutableBatchReportsErrorsAndPersistsOtherCommands ........................   Passed    0.03 sec
+        Start 120: CliTest.ShutdownSignalsDuringPartialInputRollBackAndClose
+120/125 Test #120: CliTest.ShutdownSignalsDuringPartialInputRollBackAndClose ...........................   Passed    0.05 sec
+        Start 121: CliTest.BenchmarkExercisesAllWorkloadsAndRefusesExistingDirectory
+121/125 Test #121: CliTest.BenchmarkExercisesAllWorkloadsAndRefusesExistingDirectory ...................   Passed    0.16 sec
+        Start 122: StressTest.SixWritersAndTwoScannersPreserveTransferInvariantAcrossRestart
+122/125 Test #122: StressTest.SixWritersAndTwoScannersPreserveTransferInvariantAcrossRestart ...........   Passed    1.23 sec
+        Start 123: StressTest.ConcurrentInsertDeleteRollbackAndIndexReuseHaveExactFinalKeys
+123/125 Test #123: StressTest.ConcurrentInsertDeleteRollbackAndIndexReuseHaveExactFinalKeys ............   Passed    1.67 sec
+        Start 124: ValidationSuiteTest.RealLookupSamplesConcurrencyAndBufferCounters
+124/125 Test #124: ValidationSuiteTest.RealLookupSamplesConcurrencyAndBufferCounters ...................   Passed    0.17 sec
+        Start 125: ValidationSuiteTest.EveryCrashPointActuallyExitsAndRecoversTwice
+125/125 Test #125: ValidationSuiteTest.EveryCrashPointActuallyExitsAndRecoversTwice ....................   Passed    0.77 sec
+
+100% tests passed, 0 tests failed out of 125
+
+Total Test time (real) =  40.67 sec

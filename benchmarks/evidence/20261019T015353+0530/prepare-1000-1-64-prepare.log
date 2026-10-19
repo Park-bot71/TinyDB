@@ -1,0 +1,2 @@
+inserted=1000
+{"capacity_per_file":"64","category":"setup","correctness":"pass","dataset_size":"1000","name":"heap_index_prepare","operations":"1000","seconds":"0.81582155899999997","seed":"20261019","status":"pass","workers":"1"}

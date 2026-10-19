@@ -1,0 +1,2012 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Linux-c++"
+	tests="125"
+	failures="0"
+	disabled="0"
+	skipped="0"
+	hostname="parth-LOQ-15APH8"
+	time="40"
+	timestamp="2026-10-19T01:54:19"
+	>
+	<testcase name="PageTest.HeaderRoundTripAndEveryByteCoveredByChecksum" classname="PageTest.HeaderRoundTripAndEveryByteCoveredByChecksum" time="0.126725" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = PageTest.HeaderRoundTripAndEveryByteCoveredByChecksum
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from PageTest
+[ RUN      ] PageTest.HeaderRoundTripAndEveryByteCoveredByChecksum
+[       OK ] PageTest.HeaderRoundTripAndEveryByteCoveredByChecksum (124 ms)
+[----------] 1 test from PageTest (124 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (124 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="RecordTest.PortableRoundTripWithSignedExtremesAndEmbeddedNull" classname="RecordTest.PortableRoundTripWithSignedExtremesAndEmbeddedNull" time="0.0023963" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = RecordTest.PortableRoundTripWithSignedExtremesAndEmbeddedNull
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from RecordTest
+[ RUN      ] RecordTest.PortableRoundTripWithSignedExtremesAndEmbeddedNull
+[       OK ] RecordTest.PortableRoundTripWithSignedExtremesAndEmbeddedNull (0 ms)
+[----------] 1 test from RecordTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="RecordTest.RejectsInvalidLengthVersionAndOversizedNames" classname="RecordTest.RejectsInvalidLengthVersionAndOversizedNames" time="0.00224661" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = RecordTest.RejectsInvalidLengthVersionAndOversizedNames
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from RecordTest
+[ RUN      ] RecordTest.RejectsInvalidLengthVersionAndOversizedNames
+[       OK ] RecordTest.RejectsInvalidLengthVersionAndOversizedNames (0 ms)
+[----------] 1 test from RecordTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="SlottedPageTest.ExactCapacityAndOversizedRecords" classname="SlottedPageTest.ExactCapacityAndOversizedRecords" time="0.00175296" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = SlottedPageTest.ExactCapacityAndOversizedRecords
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from SlottedPageTest
+[ RUN      ] SlottedPageTest.ExactCapacityAndOversizedRecords
+[       OK ] SlottedPageTest.ExactCapacityAndOversizedRecords (0 ms)
+[----------] 1 test from SlottedPageTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="SlottedPageTest.CompactionAndVariableSizeUpdateKeepIdsStable" classname="SlottedPageTest.CompactionAndVariableSizeUpdateKeepIdsStable" time="0.00266492" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = SlottedPageTest.CompactionAndVariableSizeUpdateKeepIdsStable
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from SlottedPageTest
+[ RUN      ] SlottedPageTest.CompactionAndVariableSizeUpdateKeepIdsStable
+[       OK ] SlottedPageTest.CompactionAndVariableSizeUpdateKeepIdsStable (0 ms)
+[----------] 1 test from SlottedPageTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="SlottedPageTest.FailedUpdateDoesNotChangePage" classname="SlottedPageTest.FailedUpdateDoesNotChangePage" time="0.00220174" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = SlottedPageTest.FailedUpdateDoesNotChangePage
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from SlottedPageTest
+[ RUN      ] SlottedPageTest.FailedUpdateDoesNotChangePage
+[       OK ] SlottedPageTest.FailedUpdateDoesNotChangePage (0 ms)
+[----------] 1 test from SlottedPageTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="SlottedPageTest.AllInvalidRecordIdFormsAreRejected" classname="SlottedPageTest.AllInvalidRecordIdFormsAreRejected" time="0.00202606" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = SlottedPageTest.AllInvalidRecordIdFormsAreRejected
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from SlottedPageTest
+[ RUN      ] SlottedPageTest.AllInvalidRecordIdFormsAreRejected
+[       OK ] SlottedPageTest.AllInvalidRecordIdFormsAreRejected (0 ms)
+[----------] 1 test from SlottedPageTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="SlottedPageTest.RejectsMalformedLayoutEvenWithValidChecksum" classname="SlottedPageTest.RejectsMalformedLayoutEvenWithValidChecksum" time="0.00283833" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = SlottedPageTest.RejectsMalformedLayoutEvenWithValidChecksum
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from SlottedPageTest
+[ RUN      ] SlottedPageTest.RejectsMalformedLayoutEvenWithValidChecksum
+[       OK ] SlottedPageTest.RejectsMalformedLayoutEvenWithValidChecksum (1 ms)
+[----------] 1 test from SlottedPageTest (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="SlottedPageTest.RandomizedOperationsCheckInvariantsAfterEachMutation" classname="SlottedPageTest.RandomizedOperationsCheckInvariantsAfterEachMutation" time="0.132413" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = SlottedPageTest.RandomizedOperationsCheckInvariantsAfterEachMutation
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from SlottedPageTest
+[ RUN      ] SlottedPageTest.RandomizedOperationsCheckInvariantsAfterEachMutation
+[       OK ] SlottedPageTest.RandomizedOperationsCheckInvariantsAfterEachMutation (130 ms)
+[----------] 1 test from SlottedPageTest (130 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (130 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="StorageTest.AllocateFreeAndReuseAcrossRestart" classname="StorageTest.AllocateFreeAndReuseAcrossRestart" time="0.0147217" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = StorageTest.AllocateFreeAndReuseAcrossRestart
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from StorageTest
+[ RUN      ] StorageTest.AllocateFreeAndReuseAcrossRestart
+[       OK ] StorageTest.AllocateFreeAndReuseAcrossRestart (12 ms)
+[----------] 1 test from StorageTest (12 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (12 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="StorageTest.PageWritesPersistAndGenerationsNeverRepeatOnReopen" classname="StorageTest.PageWritesPersistAndGenerationsNeverRepeatOnReopen" time="0.00356356" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = StorageTest.PageWritesPersistAndGenerationsNeverRepeatOnReopen
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from StorageTest
+[ RUN      ] StorageTest.PageWritesPersistAndGenerationsNeverRepeatOnReopen
+[       OK ] StorageTest.PageWritesPersistAndGenerationsNeverRepeatOnReopen (1 ms)
+[----------] 1 test from StorageTest (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="StorageTest.InvalidPagesAndClosedHandlesReportErrors" classname="StorageTest.InvalidPagesAndClosedHandlesReportErrors" time="0.00341963" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = StorageTest.InvalidPagesAndClosedHandlesReportErrors
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from StorageTest
+[ RUN      ] StorageTest.InvalidPagesAndClosedHandlesReportErrors
+[       OK ] StorageTest.InvalidPagesAndClosedHandlesReportErrors (1 ms)
+[----------] 1 test from StorageTest (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="StorageTest.ExclusiveOwnerLockIsReleasedAtClose" classname="StorageTest.ExclusiveOwnerLockIsReleasedAtClose" time="0.00243719" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = StorageTest.ExclusiveOwnerLockIsReleasedAtClose
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from StorageTest
+[ RUN      ] StorageTest.ExclusiveOwnerLockIsReleasedAtClose
+[       OK ] StorageTest.ExclusiveOwnerLockIsReleasedAtClose (0 ms)
+[----------] 1 test from StorageTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="StorageTest.MissingParentAndExistingEmptyFileFailExplicitly" classname="StorageTest.MissingParentAndExistingEmptyFileFailExplicitly" time="0.00188632" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = StorageTest.MissingParentAndExistingEmptyFileFailExplicitly
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from StorageTest
+[ RUN      ] StorageTest.MissingParentAndExistingEmptyFileFailExplicitly
+[       OK ] StorageTest.MissingParentAndExistingEmptyFileFailExplicitly (0 ms)
+[----------] 1 test from StorageTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="StorageTest.TruncationAndCorruptChecksumAreRejected" classname="StorageTest.TruncationAndCorruptChecksumAreRejected" time="0.00507372" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = StorageTest.TruncationAndCorruptChecksumAreRejected
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from StorageTest
+[ RUN      ] StorageTest.TruncationAndCorruptChecksumAreRejected
+[       OK ] StorageTest.TruncationAndCorruptChecksumAreRejected (2 ms)
+[----------] 1 test from StorageTest (2 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (2 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="StorageTest.RejectsFreeListCyclesAndOrphans" classname="StorageTest.RejectsFreeListCyclesAndOrphans" time="0.00327952" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = StorageTest.RejectsFreeListCyclesAndOrphans
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from StorageTest
+[ RUN      ] StorageTest.RejectsFreeListCyclesAndOrphans
+[       OK ] StorageTest.RejectsFreeListCyclesAndOrphans (1 ms)
+[----------] 1 test from StorageTest (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="StorageTest.RejectsBadMetadataVersionCountAndFreeHead" classname="StorageTest.RejectsBadMetadataVersionCountAndFreeHead" time="0.00352396" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = StorageTest.RejectsBadMetadataVersionCountAndFreeHead
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from StorageTest
+[ RUN      ] StorageTest.RejectsBadMetadataVersionCountAndFreeHead
+[       OK ] StorageTest.RejectsBadMetadataVersionCountAndFreeHead (1 ms)
+[----------] 1 test from StorageTest (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="StorageTest.GenerationExhaustionRejectsInsteadOfWrapping" classname="StorageTest.GenerationExhaustionRejectsInsteadOfWrapping" time="0.0029229" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = StorageTest.GenerationExhaustionRejectsInsteadOfWrapping
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from StorageTest
+[ RUN      ] StorageTest.GenerationExhaustionRejectsInsteadOfWrapping
+[       OK ] StorageTest.GenerationExhaustionRejectsInsteadOfWrapping (0 ms)
+[----------] 1 test from StorageTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="StorageTest.HeapCrudPersistenceAndScan" classname="StorageTest.HeapCrudPersistenceAndScan" time="0.00502553" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = StorageTest.HeapCrudPersistenceAndScan
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from StorageTest
+[ RUN      ] StorageTest.HeapCrudPersistenceAndScan
+[       OK ] StorageTest.HeapCrudPersistenceAndScan (3 ms)
+[----------] 1 test from StorageTest (3 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (3 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="StorageTest.StaleIdsStayInvalidAfterSlotAndWholePageReuse" classname="StorageTest.StaleIdsStayInvalidAfterSlotAndWholePageReuse" time="0.00551005" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = StorageTest.StaleIdsStayInvalidAfterSlotAndWholePageReuse
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from StorageTest
+[ RUN      ] StorageTest.StaleIdsStayInvalidAfterSlotAndWholePageReuse
+[       OK ] StorageTest.StaleIdsStayInvalidAfterSlotAndWholePageReuse (3 ms)
+[----------] 1 test from StorageTest (3 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (3 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="StorageTest.FullHeapPagesAllocateAndRejectedUpdatePreservesOriginal" classname="StorageTest.FullHeapPagesAllocateAndRejectedUpdatePreservesOriginal" time="0.00360534" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = StorageTest.FullHeapPagesAllocateAndRejectedUpdatePreservesOriginal
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from StorageTest
+[ RUN      ] StorageTest.FullHeapPagesAllocateAndRejectedUpdatePreservesOriginal
+[       OK ] StorageTest.FullHeapPagesAllocateAndRejectedUpdatePreservesOriginal (1 ms)
+[----------] 1 test from StorageTest (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="StorageTest.RandomizedHeapCrudAgainstModelWithRepeatedReopens" classname="StorageTest.RandomizedHeapCrudAgainstModelWithRepeatedReopens" time="0.211717" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = StorageTest.RandomizedHeapCrudAgainstModelWithRepeatedReopens
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from StorageTest
+[ RUN      ] StorageTest.RandomizedHeapCrudAgainstModelWithRepeatedReopens
+[       OK ] StorageTest.RandomizedHeapCrudAgainstModelWithRepeatedReopens (209 ms)
+[----------] 1 test from StorageTest (209 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (209 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="StorageTest.ConcurrentHeapCallsAreSerializedWithoutLostRecords" classname="StorageTest.ConcurrentHeapCallsAreSerializedWithoutLostRecords" time="0.101187" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = StorageTest.ConcurrentHeapCallsAreSerializedWithoutLostRecords
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from StorageTest
+[ RUN      ] StorageTest.ConcurrentHeapCallsAreSerializedWithoutLostRecords
+[       OK ] StorageTest.ConcurrentHeapCallsAreSerializedWithoutLostRecords (98 ms)
+[----------] 1 test from StorageTest (98 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (98 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="StorageTest.SyncedRecordsSurviveProcessExitWithoutDestructors" classname="StorageTest.SyncedRecordsSurviveProcessExitWithoutDestructors" time="0.00446366" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = StorageTest.SyncedRecordsSurviveProcessExitWithoutDestructors
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from StorageTest
+[ RUN      ] StorageTest.SyncedRecordsSurviveProcessExitWithoutDestructors
+[       OK ] StorageTest.SyncedRecordsSurviveProcessExitWithoutDestructors (2 ms)
+[----------] 1 test from StorageTest (2 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (2 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="StorageTest.RealPartialWriteFailurePoisonsHandleAndIsDetectedOnReopen" classname="StorageTest.RealPartialWriteFailurePoisonsHandleAndIsDetectedOnReopen" time="0.00314395" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = StorageTest.RealPartialWriteFailurePoisonsHandleAndIsDetectedOnReopen
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from StorageTest
+[ RUN      ] StorageTest.RealPartialWriteFailurePoisonsHandleAndIsDetectedOnReopen
+[       OK ] StorageTest.RealPartialWriteFailurePoisonsHandleAndIsDetectedOnReopen (1 ms)
+[----------] 1 test from StorageTest (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="BufferTest.RejectsZeroFrames" classname="BufferTest.RejectsZeroFrames" time="0.00288478" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = BufferTest.RejectsZeroFrames
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BufferTest
+[ RUN      ] BufferTest.RejectsZeroFrames
+[       OK ] BufferTest.RejectsZeroFrames (0 ms)
+[----------] 1 test from BufferTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="BufferTest.RepeatedFetchHitsCacheAndPinsAreReleased" classname="BufferTest.RepeatedFetchHitsCacheAndPinsAreReleased" time="0.00313113" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = BufferTest.RepeatedFetchHitsCacheAndPinsAreReleased
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BufferTest
+[ RUN      ] BufferTest.RepeatedFetchHitsCacheAndPinsAreReleased
+[       OK ] BufferTest.RepeatedFetchHitsCacheAndPinsAreReleased (0 ms)
+[----------] 1 test from BufferTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="BufferTest.ExhaustionAndFlushWithPinnedFramesFailWithoutAllocating" classname="BufferTest.ExhaustionAndFlushWithPinnedFramesFailWithoutAllocating" time="0.0031631" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = BufferTest.ExhaustionAndFlushWithPinnedFramesFailWithoutAllocating
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BufferTest
+[ RUN      ] BufferTest.ExhaustionAndFlushWithPinnedFramesFailWithoutAllocating
+[       OK ] BufferTest.ExhaustionAndFlushWithPinnedFramesFailWithoutAllocating (1 ms)
+[----------] 1 test from BufferTest (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="BufferTest.GuardMovesAndExceptionUnwindingUnpinExactlyOnce" classname="BufferTest.GuardMovesAndExceptionUnwindingUnpinExactlyOnce" time="0.00353836" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = BufferTest.GuardMovesAndExceptionUnwindingUnpinExactlyOnce
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BufferTest
+[ RUN      ] BufferTest.GuardMovesAndExceptionUnwindingUnpinExactlyOnce
+[       OK ] BufferTest.GuardMovesAndExceptionUnwindingUnpinExactlyOnce (1 ms)
+[----------] 1 test from BufferTest (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="BufferTest.DirtyTrackingFlushAndCleanEviction" classname="BufferTest.DirtyTrackingFlushAndCleanEviction" time="0.00379355" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = BufferTest.DirtyTrackingFlushAndCleanEviction
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BufferTest
+[ RUN      ] BufferTest.DirtyTrackingFlushAndCleanEviction
+[       OK ] BufferTest.DirtyTrackingFlushAndCleanEviction (1 ms)
+[----------] 1 test from BufferTest (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="BufferTest.ClockSecondChanceAndPinnedVictims" classname="BufferTest.ClockSecondChanceAndPinnedVictims" time="0.00335554" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = BufferTest.ClockSecondChanceAndPinnedVictims
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BufferTest
+[ RUN      ] BufferTest.ClockSecondChanceAndPinnedVictims
+[       OK ] BufferTest.ClockSecondChanceAndPinnedVictims (1 ms)
+[----------] 1 test from BufferTest (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="BufferTest.InvalidFetchDoesNotEvictOrLoseDirtyVictim" classname="BufferTest.InvalidFetchDoesNotEvictOrLoseDirtyVictim" time="0.00390059" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = BufferTest.InvalidFetchDoesNotEvictOrLoseDirtyVictim
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BufferTest
+[ RUN      ] BufferTest.InvalidFetchDoesNotEvictOrLoseDirtyVictim
+[       OK ] BufferTest.InvalidFetchDoesNotEvictOrLoseDirtyVictim (1 ms)
+[----------] 1 test from BufferTest (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="BufferTest.NewAndDeletedPagesRemainCoherentOnReuse" classname="BufferTest.NewAndDeletedPagesRemainCoherentOnReuse" time="0.003236" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = BufferTest.NewAndDeletedPagesRemainCoherentOnReuse
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BufferTest
+[ RUN      ] BufferTest.NewAndDeletedPagesRemainCoherentOnReuse
+[       OK ] BufferTest.NewAndDeletedPagesRemainCoherentOnReuse (1 ms)
+[----------] 1 test from BufferTest (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="BufferTest.FlushAllChecksAllPinsBeforeWritingAnyPage" classname="BufferTest.FlushAllChecksAllPinsBeforeWritingAnyPage" time="0.00295444" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = BufferTest.FlushAllChecksAllPinsBeforeWritingAnyPage
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BufferTest
+[ RUN      ] BufferTest.FlushAllChecksAllPinsBeforeWritingAnyPage
+[       OK ] BufferTest.FlushAllChecksAllPinsBeforeWritingAnyPage (1 ms)
+[----------] 1 test from BufferTest (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="BufferTest.WalIsForcedBeforeExplicitFlushAndDirtyEviction" classname="BufferTest.WalIsForcedBeforeExplicitFlushAndDirtyEviction" time="0.00396232" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = BufferTest.WalIsForcedBeforeExplicitFlushAndDirtyEviction
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BufferTest
+[ RUN      ] BufferTest.WalIsForcedBeforeExplicitFlushAndDirtyEviction
+[       OK ] BufferTest.WalIsForcedBeforeExplicitFlushAndDirtyEviction (1 ms)
+[----------] 1 test from BufferTest (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="BufferTest.NonzeroLsnWithoutWalCallbackCannotReachDisk" classname="BufferTest.NonzeroLsnWithoutWalCallbackCannotReachDisk" time="0.00290554" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = BufferTest.NonzeroLsnWithoutWalCallbackCannotReachDisk
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BufferTest
+[ RUN      ] BufferTest.NonzeroLsnWithoutWalCallbackCannotReachDisk
+[       OK ] BufferTest.NonzeroLsnWithoutWalCallbackCannotReachDisk (1 ms)
+[----------] 1 test from BufferTest (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="BufferTest.FailedWalForceRetainsDirtyPageAndCanBeRetried" classname="BufferTest.FailedWalForceRetainsDirtyPageAndCanBeRetried" time="0.0033523" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = BufferTest.FailedWalForceRetainsDirtyPageAndCanBeRetried
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BufferTest
+[ RUN      ] BufferTest.FailedWalForceRetainsDirtyPageAndCanBeRetried
+[       OK ] BufferTest.FailedWalForceRetainsDirtyPageAndCanBeRetried (1 ms)
+[----------] 1 test from BufferTest (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="BufferTest.ZeroLsnNeedsNoWalForceAndReplacementCannotChangeIdentityOrRegressLsn" classname="BufferTest.ZeroLsnNeedsNoWalForceAndReplacementCannotChangeIdentityOrRegressLsn" time="0.00333594" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = BufferTest.ZeroLsnNeedsNoWalForceAndReplacementCannotChangeIdentityOrRegressLsn
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BufferTest
+[ RUN      ] BufferTest.ZeroLsnNeedsNoWalForceAndReplacementCannotChangeIdentityOrRegressLsn
+[       OK ] BufferTest.ZeroLsnNeedsNoWalForceAndReplacementCannotChangeIdentityOrRegressLsn (1 ms)
+[----------] 1 test from BufferTest (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="BufferTest.CloseFlushesAndRejectsFurtherOperations" classname="BufferTest.CloseFlushesAndRejectsFurtherOperations" time="0.00350245" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = BufferTest.CloseFlushesAndRejectsFurtherOperations
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BufferTest
+[ RUN      ] BufferTest.CloseFlushesAndRejectsFurtherOperations
+[       OK ] BufferTest.CloseFlushesAndRejectsFurtherOperations (1 ms)
+[----------] 1 test from BufferTest (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="BufferTest.LiveGuardKeepsFramesAliveAfterPoolDestructionWithoutImplicitFlush" classname="BufferTest.LiveGuardKeepsFramesAliveAfterPoolDestructionWithoutImplicitFlush" time="0.00276803" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = BufferTest.LiveGuardKeepsFramesAliveAfterPoolDestructionWithoutImplicitFlush
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BufferTest
+[ RUN      ] BufferTest.LiveGuardKeepsFramesAliveAfterPoolDestructionWithoutImplicitFlush
+[       OK ] BufferTest.LiveGuardKeepsFramesAliveAfterPoolDestructionWithoutImplicitFlush (0 ms)
+[----------] 1 test from BufferTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="BufferTest.SharedReadersCoexistAndWriterWaitsWithoutHoldingPoolMutex" classname="BufferTest.SharedReadersCoexistAndWriterWaitsWithoutHoldingPoolMutex" time="0.00292032" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = BufferTest.SharedReadersCoexistAndWriterWaitsWithoutHoldingPoolMutex
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BufferTest
+[ RUN      ] BufferTest.SharedReadersCoexistAndWriterWaitsWithoutHoldingPoolMutex
+[       OK ] BufferTest.SharedReadersCoexistAndWriterWaitsWithoutHoldingPoolMutex (1 ms)
+[----------] 1 test from BufferTest (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="BufferTest.ConcurrentWritersDoNotLoseUpdates" classname="BufferTest.ConcurrentWritersDoNotLoseUpdates" time="0.0423686" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = BufferTest.ConcurrentWritersDoNotLoseUpdates
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BufferTest
+[ RUN      ] BufferTest.ConcurrentWritersDoNotLoseUpdates
+[       OK ] BufferTest.ConcurrentWritersDoNotLoseUpdates (40 ms)
+[----------] 1 test from BufferTest (40 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (40 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="BufferTest.ConcurrentEvictionAndFlushingKeepAllIncrements" classname="BufferTest.ConcurrentEvictionAndFlushingKeepAllIncrements" time="0.0424571" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = BufferTest.ConcurrentEvictionAndFlushingKeepAllIncrements
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BufferTest
+[ RUN      ] BufferTest.ConcurrentEvictionAndFlushingKeepAllIncrements
+[       OK ] BufferTest.ConcurrentEvictionAndFlushingKeepAllIncrements (40 ms)
+[----------] 1 test from BufferTest (40 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (40 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="BufferTest.RandomizedCacheWritesSurviveRepeatedEvictionAndReopen" classname="BufferTest.RandomizedCacheWritesSurviveRepeatedEvictionAndReopen" time="0.0541898" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = BufferTest.RandomizedCacheWritesSurviveRepeatedEvictionAndReopen
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BufferTest
+[ RUN      ] BufferTest.RandomizedCacheWritesSurviveRepeatedEvictionAndReopen
+[       OK ] BufferTest.RandomizedCacheWritesSurviveRepeatedEvictionAndReopen (51 ms)
+[----------] 1 test from BufferTest (51 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (51 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="BufferTest.RealPageWriteErrorPreventsServingCachedPages" classname="BufferTest.RealPageWriteErrorPreventsServingCachedPages" time="0.0044368" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = BufferTest.RealPageWriteErrorPreventsServingCachedPages
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BufferTest
+[ RUN      ] BufferTest.RealPageWriteErrorPreventsServingCachedPages
+[       OK ] BufferTest.RealPageWriteErrorPreventsServingCachedPages (2 ms)
+[----------] 1 test from BufferTest (2 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (2 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="BufferTest.HeapUsesCacheAndPersistsWithOnlyOneFrame" classname="BufferTest.HeapUsesCacheAndPersistsWithOnlyOneFrame" time="0.0103391" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = BufferTest.HeapUsesCacheAndPersistsWithOnlyOneFrame
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BufferTest
+[ RUN      ] BufferTest.HeapUsesCacheAndPersistsWithOnlyOneFrame
+[       OK ] BufferTest.HeapUsesCacheAndPersistsWithOnlyOneFrame (8 ms)
+[----------] 1 test from BufferTest (8 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (8 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="IndexPageTest.FullLeafAndInternalPagesRoundTrip" classname="IndexPageTest.FullLeafAndInternalPagesRoundTrip" time="0.00224485" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = IndexPageTest.FullLeafAndInternalPagesRoundTrip
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from IndexPageTest
+[ RUN      ] IndexPageTest.FullLeafAndInternalPagesRoundTrip
+[       OK ] IndexPageTest.FullLeafAndInternalPagesRoundTrip (0 ms)
+[----------] 1 test from IndexPageTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="IndexPageTest.SignedExtremesAndHeaderRoundTrip" classname="IndexPageTest.SignedExtremesAndHeaderRoundTrip" time="0.00169207" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = IndexPageTest.SignedExtremesAndHeaderRoundTrip
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from IndexPageTest
+[ RUN      ] IndexPageTest.SignedExtremesAndHeaderRoundTrip
+[       OK ] IndexPageTest.SignedExtremesAndHeaderRoundTrip (0 ms)
+[----------] 1 test from IndexPageTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="IndexPageTest.RejectsMalformedCountOrderingReferencesAndReservedFields" classname="IndexPageTest.RejectsMalformedCountOrderingReferencesAndReservedFields" time="0.00266513" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = IndexPageTest.RejectsMalformedCountOrderingReferencesAndReservedFields
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from IndexPageTest
+[ RUN      ] IndexPageTest.RejectsMalformedCountOrderingReferencesAndReservedFields
+[       OK ] IndexPageTest.RejectsMalformedCountOrderingReferencesAndReservedFields (0 ms)
+[----------] 1 test from IndexPageTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="IndexTest.TypedAllocationPersistsAndCannotChangeType" classname="IndexTest.TypedAllocationPersistsAndCannotChangeType" time="0.00375161" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = IndexTest.TypedAllocationPersistsAndCannotChangeType
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from IndexTest
+[ RUN      ] IndexTest.TypedAllocationPersistsAndCannotChangeType
+[       OK ] IndexTest.TypedAllocationPersistsAndCannotChangeType (1 ms)
+[----------] 1 test from IndexTest (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="IndexTest.EmptyTreeDuplicatesMissingKeysAndInvalidValues" classname="IndexTest.EmptyTreeDuplicatesMissingKeysAndInvalidValues" time="0.00645074" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = IndexTest.EmptyTreeDuplicatesMissingKeysAndInvalidValues
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from IndexTest
+[ RUN      ] IndexTest.EmptyTreeDuplicatesMissingKeysAndInvalidValues
+[       OK ] IndexTest.EmptyTreeDuplicatesMissingKeysAndInvalidValues (4 ms)
+[----------] 1 test from IndexTest (4 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (4 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="IndexTest.IndexPagesUseWalBeforePageFlushOrdering" classname="IndexTest.IndexPagesUseWalBeforePageFlushOrdering" time="0.00292343" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = IndexTest.IndexPagesUseWalBeforePageFlushOrdering
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from IndexTest
+[ RUN      ] IndexTest.IndexPagesUseWalBeforePageFlushOrdering
+[       OK ] IndexTest.IndexPagesUseWalBeforePageFlushOrdering (1 ms)
+[----------] 1 test from IndexTest (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="IndexTest.AscendingDescendingAndRandomInsertionValidateEveryStep" classname="IndexTest.AscendingDescendingAndRandomInsertionValidateEveryStep" time="3.24748" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = IndexTest.AscendingDescendingAndRandomInsertionValidateEveryStep
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from IndexTest
+[ RUN      ] IndexTest.AscendingDescendingAndRandomInsertionValidateEveryStep
+[       OK ] IndexTest.AscendingDescendingAndRandomInsertionValidateEveryStep (3245 ms)
+[----------] 1 test from IndexTest (3245 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (3245 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="IndexTest.LeafRedistributionFromBothSides" classname="IndexTest.LeafRedistributionFromBothSides" time="0.0200587" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = IndexTest.LeafRedistributionFromBothSides
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from IndexTest
+[ RUN      ] IndexTest.LeafRedistributionFromBothSides
+[       OK ] IndexTest.LeafRedistributionFromBothSides (17 ms)
+[----------] 1 test from IndexTest (17 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (17 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="IndexTest.LeafMergeFromEitherSideCollapsesRoot" classname="IndexTest.LeafMergeFromEitherSideCollapsesRoot" time="0.0182035" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = IndexTest.LeafMergeFromEitherSideCollapsesRoot
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from IndexTest
+[ RUN      ] IndexTest.LeafMergeFromEitherSideCollapsesRoot
+[       OK ] IndexTest.LeafMergeFromEitherSideCollapsesRoot (15 ms)
+[----------] 1 test from IndexTest (15 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (15 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="IndexTest.InternalRebalancingAndCompleteDeletionCheckEveryInvariant" classname="IndexTest.InternalRebalancingAndCompleteDeletionCheckEveryInvariant" time="4.92463" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = IndexTest.InternalRebalancingAndCompleteDeletionCheckEveryInvariant
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from IndexTest
+[ RUN      ] IndexTest.InternalRebalancingAndCompleteDeletionCheckEveryInvariant
+[       OK ] IndexTest.InternalRebalancingAndCompleteDeletionCheckEveryInvariant (4921 ms)
+[----------] 1 test from IndexTest (4921 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (4921 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="IndexTest.RandomCrudAgainstMapForOddAndEvenCapacities" classname="IndexTest.RandomCrudAgainstMapForOddAndEvenCapacities" time="3.56155" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = IndexTest.RandomCrudAgainstMapForOddAndEvenCapacities
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from IndexTest
+[ RUN      ] IndexTest.RandomCrudAgainstMapForOddAndEvenCapacities
+[       OK ] IndexTest.RandomCrudAgainstMapForOddAndEvenCapacities (3559 ms)
+[----------] 1 test from IndexTest (3559 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (3559 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="IndexTest.DefaultCapacitySplitsFullPhysicalLeafPages" classname="IndexTest.DefaultCapacitySplitsFullPhysicalLeafPages" time="1.15448" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = IndexTest.DefaultCapacitySplitsFullPhysicalLeafPages
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from IndexTest
+[ RUN      ] IndexTest.DefaultCapacitySplitsFullPhysicalLeafPages
+[       OK ] IndexTest.DefaultCapacitySplitsFullPhysicalLeafPages (1151 ms)
+[----------] 1 test from IndexTest (1151 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1151 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="IndexTest.RangeScansCrossLeavesWithLimitsAndSignedExtremes" classname="IndexTest.RangeScansCrossLeavesWithLimitsAndSignedExtremes" time="0.243689" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = IndexTest.RangeScansCrossLeavesWithLimitsAndSignedExtremes
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from IndexTest
+[ RUN      ] IndexTest.RangeScansCrossLeavesWithLimitsAndSignedExtremes
+[       OK ] IndexTest.RangeScansCrossLeavesWithLimitsAndSignedExtremes (240 ms)
+[----------] 1 test from IndexTest (240 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (240 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="IndexTest.ReusesFreedPagesAfterRestartWithoutFileGrowth" classname="IndexTest.ReusesFreedPagesAfterRestartWithoutFileGrowth" time="0.637598" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = IndexTest.ReusesFreedPagesAfterRestartWithoutFileGrowth
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from IndexTest
+[ RUN      ] IndexTest.ReusesFreedPagesAfterRestartWithoutFileGrowth
+[       OK ] IndexTest.ReusesFreedPagesAfterRestartWithoutFileGrowth (634 ms)
+[----------] 1 test from IndexTest (634 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (634 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="IndexTest.OptionsPersistAndInvalidOptionsDoNotCreateFiles" classname="IndexTest.OptionsPersistAndInvalidOptionsDoNotCreateFiles" time="0.00450091" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = IndexTest.OptionsPersistAndInvalidOptionsDoNotCreateFiles
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from IndexTest
+[ RUN      ] IndexTest.OptionsPersistAndInvalidOptionsDoNotCreateFiles
+[       OK ] IndexTest.OptionsPersistAndInvalidOptionsDoNotCreateFiles (1 ms)
+[----------] 1 test from IndexTest (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (2 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="IndexTest.ClosedTreeRejectsOperationsAndFileKindsCannotBeMixed" classname="IndexTest.ClosedTreeRejectsOperationsAndFileKindsCannotBeMixed" time="0.00597994" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = IndexTest.ClosedTreeRejectsOperationsAndFileKindsCannotBeMixed
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from IndexTest
+[ RUN      ] IndexTest.ClosedTreeRejectsOperationsAndFileKindsCannotBeMixed
+[       OK ] IndexTest.ClosedTreeRejectsOperationsAndFileKindsCannotBeMixed (3 ms)
+[----------] 1 test from IndexTest (3 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (3 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="IndexTest.StartupRejectsStructuralCorruptionWithValidChecksums" classname="IndexTest.StartupRejectsStructuralCorruptionWithValidChecksums" time="0.0279926" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = IndexTest.StartupRejectsStructuralCorruptionWithValidChecksums
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from IndexTest
+[ RUN      ] IndexTest.StartupRejectsStructuralCorruptionWithValidChecksums
+[       OK ] IndexTest.StartupRejectsStructuralCorruptionWithValidChecksums (26 ms)
+[----------] 1 test from IndexTest (26 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (26 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="IndexTest.IndexLookupFindsActualHeapRecordsAcrossRestarts" classname="IndexTest.IndexLookupFindsActualHeapRecordsAcrossRestarts" time="0.164293" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = IndexTest.IndexLookupFindsActualHeapRecordsAcrossRestarts
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from IndexTest
+[ RUN      ] IndexTest.IndexLookupFindsActualHeapRecordsAcrossRestarts
+[       OK ] IndexTest.IndexLookupFindsActualHeapRecordsAcrossRestarts (161 ms)
+[----------] 1 test from IndexTest (161 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (161 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="IndexTest.ConcurrentReadersWritersAndScansRemainConsistent" classname="IndexTest.ConcurrentReadersWritersAndScansRemainConsistent" time="0.553735" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = IndexTest.ConcurrentReadersWritersAndScansRemainConsistent
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from IndexTest
+[ RUN      ] IndexTest.ConcurrentReadersWritersAndScansRemainConsistent
+[       OK ] IndexTest.ConcurrentReadersWritersAndScansRemainConsistent (551 ms)
+[----------] 1 test from IndexTest (551 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (551 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="IndexTest.SyncedRootAndSplitsSurviveChildExitWithoutDestructors" classname="IndexTest.SyncedRootAndSplitsSurviveChildExitWithoutDestructors" time="0.291945" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = IndexTest.SyncedRootAndSplitsSurviveChildExitWithoutDestructors
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from IndexTest
+[ RUN      ] IndexTest.SyncedRootAndSplitsSurviveChildExitWithoutDestructors
+[       OK ] IndexTest.SyncedRootAndSplitsSurviveChildExitWithoutDestructors (289 ms)
+[----------] 1 test from IndexTest (289 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (289 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="IndexTest.RealWriteFailurePoisonsIndexInsteadOfAcknowledgingMutation" classname="IndexTest.RealWriteFailurePoisonsIndexInsteadOfAcknowledgingMutation" time="0.00477035" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = IndexTest.RealWriteFailurePoisonsIndexInsteadOfAcknowledgingMutation
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from IndexTest
+[ RUN      ] IndexTest.RealWriteFailurePoisonsIndexInsteadOfAcknowledgingMutation
+[       OK ] IndexTest.RealWriteFailurePoisonsIndexInsteadOfAcknowledgingMutation (2 ms)
+[----------] 1 test from IndexTest (2 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (2 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="LockTest.FullCompatibilityMatrixAndInvalidInputs" classname="LockTest.FullCompatibilityMatrixAndInvalidInputs" time="0.00231063" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = LockTest.FullCompatibilityMatrixAndInvalidInputs
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from LockTest
+[ RUN      ] LockTest.FullCompatibilityMatrixAndInvalidInputs
+[       OK ] LockTest.FullCompatibilityMatrixAndInvalidInputs (0 ms)
+[----------] 1 test from LockTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="LockTest.SharedCompatibilityAndStrictUpgradeModes" classname="LockTest.SharedCompatibilityAndStrictUpgradeModes" time="0.00255661" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = LockTest.SharedCompatibilityAndStrictUpgradeModes
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from LockTest
+[ RUN      ] LockTest.SharedCompatibilityAndStrictUpgradeModes
+[       OK ] LockTest.SharedCompatibilityAndStrictUpgradeModes (0 ms)
+[----------] 1 test from LockTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="LockTest.TimeoutRetainsGrantedLocksUntilCoordinatorReleasesThem" classname="LockTest.TimeoutRetainsGrantedLocksUntilCoordinatorReleasesThem" time="0.0321317" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = LockTest.TimeoutRetainsGrantedLocksUntilCoordinatorReleasesThem
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from LockTest
+[ RUN      ] LockTest.TimeoutRetainsGrantedLocksUntilCoordinatorReleasesThem
+[       OK ] LockTest.TimeoutRetainsGrantedLocksUntilCoordinatorReleasesThem (30 ms)
+[----------] 1 test from LockTest (30 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (30 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="LockTest.QueuedWriterIsNotBypassedByNewReaders" classname="LockTest.QueuedWriterIsNotBypassedByNewReaders" time="0.00342236" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = LockTest.QueuedWriterIsNotBypassedByNewReaders
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from LockTest
+[ RUN      ] LockTest.QueuedWriterIsNotBypassedByNewReaders
+[       OK ] LockTest.QueuedWriterIsNotBypassedByNewReaders (0 ms)
+[----------] 1 test from LockTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="LockTest.CancelingWaiterDoesNotGrantAnAbortedRegistration" classname="LockTest.CancelingWaiterDoesNotGrantAnAbortedRegistration" time="0.00242938" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = LockTest.CancelingWaiterDoesNotGrantAnAbortedRegistration
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from LockTest
+[ RUN      ] LockTest.CancelingWaiterDoesNotGrantAnAbortedRegistration
+[       OK ] LockTest.CancelingWaiterDoesNotGrantAnAbortedRegistration (0 ms)
+[----------] 1 test from LockTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="TransactionTest.DiskUndoRestoresAllocationTypesPayloadAndGenerationHighWater" classname="TransactionTest.DiskUndoRestoresAllocationTypesPayloadAndGenerationHighWater" time="0.00700286" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = TransactionTest.DiskUndoRestoresAllocationTypesPayloadAndGenerationHighWater
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from TransactionTest
+[ RUN      ] TransactionTest.DiskUndoRestoresAllocationTypesPayloadAndGenerationHighWater
+[       OK ] TransactionTest.DiskUndoRestoresAllocationTypesPayloadAndGenerationHighWater (4 ms)
+[----------] 1 test from TransactionTest (4 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (4 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="TransactionTest.CacheDiscardAfterPhysicalUndoAndPinnedRejection" classname="TransactionTest.CacheDiscardAfterPhysicalUndoAndPinnedRejection" time="0.00390478" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = TransactionTest.CacheDiscardAfterPhysicalUndoAndPinnedRejection
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from TransactionTest
+[ RUN      ] TransactionTest.CacheDiscardAfterPhysicalUndoAndPinnedRejection
+[       OK ] TransactionTest.CacheDiscardAfterPhysicalUndoAndPinnedRejection (1 ms)
+[----------] 1 test from TransactionTest (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="TransactionTest.LifecycleCommitAndRestartPersistenceWithoutDatabaseClose" classname="TransactionTest.LifecycleCommitAndRestartPersistenceWithoutDatabaseClose" time="0.0285525" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = TransactionTest.LifecycleCommitAndRestartPersistenceWithoutDatabaseClose
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from TransactionTest
+[ RUN      ] TransactionTest.LifecycleCommitAndRestartPersistenceWithoutDatabaseClose
+[       OK ] TransactionTest.LifecycleCommitAndRestartPersistenceWithoutDatabaseClose (26 ms)
+[----------] 1 test from TransactionTest (26 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (26 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="TransactionTest.MultiOperationRollbackAndDestructorRollback" classname="TransactionTest.MultiOperationRollbackAndDestructorRollback" time="0.0335778" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = TransactionTest.MultiOperationRollbackAndDestructorRollback
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from TransactionTest
+[ RUN      ] TransactionTest.MultiOperationRollbackAndDestructorRollback
+[       OK ] TransactionTest.MultiOperationRollbackAndDestructorRollback (31 ms)
+[----------] 1 test from TransactionTest (31 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (31 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="TransactionTest.ErrorAbortsAllPriorChangesAndDatabaseRemainsUsable" classname="TransactionTest.ErrorAbortsAllPriorChangesAndDatabaseRemainsUsable" time="0.031738" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = TransactionTest.ErrorAbortsAllPriorChangesAndDatabaseRemainsUsable
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from TransactionTest
+[ RUN      ] TransactionTest.ErrorAbortsAllPriorChangesAndDatabaseRemainsUsable
+[       OK ] TransactionTest.ErrorAbortsAllPriorChangesAndDatabaseRemainsUsable (29 ms)
+[----------] 1 test from TransactionTest (29 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (29 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="TransactionTest.FailedGrowingUpdateRestoresEarlierOperations" classname="TransactionTest.FailedGrowingUpdateRestoresEarlierOperations" time="0.024752" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = TransactionTest.FailedGrowingUpdateRestoresEarlierOperations
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from TransactionTest
+[ RUN      ] TransactionTest.FailedGrowingUpdateRestoresEarlierOperations
+[       OK ] TransactionTest.FailedGrowingUpdateRestoresEarlierOperations (22 ms)
+[----------] 1 test from TransactionTest (22 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (22 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="TransactionTest.PhysicalUndoRestoresRootsRecordsRidsAndFileSizesAfterReuse" classname="TransactionTest.PhysicalUndoRestoresRootsRecordsRidsAndFileSizesAfterReuse" time="7.53682" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = TransactionTest.PhysicalUndoRestoresRootsRecordsRidsAndFileSizesAfterReuse
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from TransactionTest
+[ RUN      ] TransactionTest.PhysicalUndoRestoresRootsRecordsRidsAndFileSizesAfterReuse
+[       OK ] TransactionTest.PhysicalUndoRestoresRootsRecordsRidsAndFileSizesAfterReuse (7534 ms)
+[----------] 1 test from TransactionTest (7534 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (7534 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="TransactionTest.DirtyPointReadWaitsUntilRollbackAndUnrelatedReadsProceed" classname="TransactionTest.DirtyPointReadWaitsUntilRollbackAndUnrelatedReadsProceed" time="0.0357504" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = TransactionTest.DirtyPointReadWaitsUntilRollbackAndUnrelatedReadsProceed
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from TransactionTest
+[ RUN      ] TransactionTest.DirtyPointReadWaitsUntilRollbackAndUnrelatedReadsProceed
+[       OK ] TransactionTest.DirtyPointReadWaitsUntilRollbackAndUnrelatedReadsProceed (33 ms)
+[----------] 1 test from TransactionTest (33 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (33 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="TransactionTest.ReadsAreRepeatableAndWritesWaitForReaderCommit" classname="TransactionTest.ReadsAreRepeatableAndWritesWaitForReaderCommit" time="0.045444" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = TransactionTest.ReadsAreRepeatableAndWritesWaitForReaderCommit
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from TransactionTest
+[ RUN      ] TransactionTest.ReadsAreRepeatableAndWritesWaitForReaderCommit
+[       OK ] TransactionTest.ReadsAreRepeatableAndWritesWaitForReaderCommit (42 ms)
+[----------] 1 test from TransactionTest (42 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (42 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="TransactionTest.MissingKeyReadPreventsInsertUntilTransactionEnds" classname="TransactionTest.MissingKeyReadPreventsInsertUntilTransactionEnds" time="0.0352803" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = TransactionTest.MissingKeyReadPreventsInsertUntilTransactionEnds
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from TransactionTest
+[ RUN      ] TransactionTest.MissingKeyReadPreventsInsertUntilTransactionEnds
+[       OK ] TransactionTest.MissingKeyReadPreventsInsertUntilTransactionEnds (32 ms)
+[----------] 1 test from TransactionTest (32 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (32 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="TransactionTest.RangeLocksPreventPhantomsEvenForEmptyRanges" classname="TransactionTest.RangeLocksPreventPhantomsEvenForEmptyRanges" time="0.0476301" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = TransactionTest.RangeLocksPreventPhantomsEvenForEmptyRanges
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from TransactionTest
+[ RUN      ] TransactionTest.RangeLocksPreventPhantomsEvenForEmptyRanges
+[       OK ] TransactionTest.RangeLocksPreventPhantomsEvenForEmptyRanges (44 ms)
+[----------] 1 test from TransactionTest (44 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (44 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="TransactionTest.ScansWaitForWholeMultiRecordCommit" classname="TransactionTest.ScansWaitForWholeMultiRecordCommit" time="0.0444747" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = TransactionTest.ScansWaitForWholeMultiRecordCommit
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from TransactionTest
+[ RUN      ] TransactionTest.ScansWaitForWholeMultiRecordCommit
+[       OK ] TransactionTest.ScansWaitForWholeMultiRecordCommit (41 ms)
+[----------] 1 test from TransactionTest (42 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (42 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="TransactionTest.ScanThenWriteUpgradeRetainsRangeProtection" classname="TransactionTest.ScanThenWriteUpgradeRetainsRangeProtection" time="0.0507195" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = TransactionTest.ScanThenWriteUpgradeRetainsRangeProtection
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from TransactionTest
+[ RUN      ] TransactionTest.ScanThenWriteUpgradeRetainsRangeProtection
+[       OK ] TransactionTest.ScanThenWriteUpgradeRetainsRangeProtection (47 ms)
+[----------] 1 test from TransactionTest (47 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (47 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="TransactionTest.TimeoutAutomaticallyUndoesEarlierUpdatesAndReleasesLocks" classname="TransactionTest.TimeoutAutomaticallyUndoesEarlierUpdatesAndReleasesLocks" time="0.106681" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = TransactionTest.TimeoutAutomaticallyUndoesEarlierUpdatesAndReleasesLocks
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from TransactionTest
+[ RUN      ] TransactionTest.TimeoutAutomaticallyUndoesEarlierUpdatesAndReleasesLocks
+[       OK ] TransactionTest.TimeoutAutomaticallyUndoesEarlierUpdatesAndReleasesLocks (104 ms)
+[----------] 1 test from TransactionTest (104 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (104 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="TransactionTest.WriterGateDeadlockIsResolvedByTimeoutAndPhysicalUndo" classname="TransactionTest.WriterGateDeadlockIsResolvedByTimeoutAndPhysicalUndo" time="0.213412" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = TransactionTest.WriterGateDeadlockIsResolvedByTimeoutAndPhysicalUndo
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from TransactionTest
+[ RUN      ] TransactionTest.WriterGateDeadlockIsResolvedByTimeoutAndPhysicalUndo
+[       OK ] TransactionTest.WriterGateDeadlockIsResolvedByTimeoutAndPhysicalUndo (210 ms)
+[----------] 1 test from TransactionTest (210 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (210 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="TransactionTest.ConcurrentReadModifyWriteHasNoLostUpdates" classname="TransactionTest.ConcurrentReadModifyWriteHasNoLostUpdates" time="0.205423" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = TransactionTest.ConcurrentReadModifyWriteHasNoLostUpdates
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from TransactionTest
+[ RUN      ] TransactionTest.ConcurrentReadModifyWriteHasNoLostUpdates
+[       OK ] TransactionTest.ConcurrentReadModifyWriteHasNoLostUpdates (201 ms)
+[----------] 1 test from TransactionTest (201 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (201 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="TransactionTest.MovesRollbackReplacedTransactionAndHandlesOutliveWrapper" classname="TransactionTest.MovesRollbackReplacedTransactionAndHandlesOutliveWrapper" time="0.0571032" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = TransactionTest.MovesRollbackReplacedTransactionAndHandlesOutliveWrapper
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from TransactionTest
+[ RUN      ] TransactionTest.MovesRollbackReplacedTransactionAndHandlesOutliveWrapper
+[       OK ] TransactionTest.MovesRollbackReplacedTransactionAndHandlesOutliveWrapper (53 ms)
+[----------] 1 test from TransactionTest (53 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (53 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="TransactionTest.CloseAndValidationRejectActiveTransactionsAndClosedBegin" classname="TransactionTest.CloseAndValidationRejectActiveTransactionsAndClosedBegin" time="0.029035" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = TransactionTest.CloseAndValidationRejectActiveTransactionsAndClosedBegin
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from TransactionTest
+[ RUN      ] TransactionTest.CloseAndValidationRejectActiveTransactionsAndClosedBegin
+[       OK ] TransactionTest.CloseAndValidationRejectActiveTransactionsAndClosedBegin (25 ms)
+[----------] 1 test from TransactionTest (25 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (25 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="TransactionTest.InvalidRangeAbortsEarlierWorkAndBoundsWork" classname="TransactionTest.InvalidRangeAbortsEarlierWorkAndBoundsWork" time="0.0540319" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = TransactionTest.InvalidRangeAbortsEarlierWorkAndBoundsWork
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from TransactionTest
+[ RUN      ] TransactionTest.InvalidRangeAbortsEarlierWorkAndBoundsWork
+[       OK ] TransactionTest.InvalidRangeAbortsEarlierWorkAndBoundsWork (51 ms)
+[----------] 1 test from TransactionTest (51 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (51 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="TransactionTest.IndexAllocationFailureUndoesHeapAndFailsDatabaseClosed" classname="TransactionTest.IndexAllocationFailureUndoesHeapAndFailsDatabaseClosed" time="0.0412955" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = TransactionTest.IndexAllocationFailureUndoesHeapAndFailsDatabaseClosed
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from TransactionTest
+[ RUN      ] TransactionTest.IndexAllocationFailureUndoesHeapAndFailsDatabaseClosed
+[       OK ] TransactionTest.IndexAllocationFailureUndoesHeapAndFailsDatabaseClosed (37 ms)
+[----------] 1 test from TransactionTest (37 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (38 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="TransactionTest.FailedCommitAndFailedUndoNeverReportCommittedOrAllowClients" classname="TransactionTest.FailedCommitAndFailedUndoNeverReportCommittedOrAllowClients" time="0.0634325" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = TransactionTest.FailedCommitAndFailedUndoNeverReportCommittedOrAllowClients
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from TransactionTest
+[ RUN      ] TransactionTest.FailedCommitAndFailedUndoNeverReportCommittedOrAllowClients
+[       OK ] TransactionTest.FailedCommitAndFailedUndoNeverReportCommittedOrAllowClients (60 ms)
+[----------] 1 test from TransactionTest (60 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (60 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="RecoveryTest.CrashBetweenUpdatesAndBeforeCommitUndoesLoser" classname="RecoveryTest.CrashBetweenUpdatesAndBeforeCommitUndoesLoser" time="0.144504" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = RecoveryTest.CrashBetweenUpdatesAndBeforeCommitUndoesLoser
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from RecoveryTest
+[ RUN      ] RecoveryTest.CrashBetweenUpdatesAndBeforeCommitUndoesLoser
+[       OK ] RecoveryTest.CrashBetweenUpdatesAndBeforeCommitUndoesLoser (141 ms)
+[----------] 1 test from RecoveryTest (141 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (141 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="RecoveryTest.DurableCommitBeforeDataFlushIsRedoneAndIdsAdvance" classname="RecoveryTest.DurableCommitBeforeDataFlushIsRedoneAndIdsAdvance" time="0.108411" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = RecoveryTest.DurableCommitBeforeDataFlushIsRedoneAndIdsAdvance
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from RecoveryTest
+[ RUN      ] RecoveryTest.DurableCommitBeforeDataFlushIsRedoneAndIdsAdvance
+[       OK ] RecoveryTest.DurableCommitBeforeDataFlushIsRedoneAndIdsAdvance (105 ms)
+[----------] 1 test from RecoveryTest (105 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (105 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="RecoveryTest.AcknowledgedCommitWithoutCloseSurvivesProcessExit" classname="RecoveryTest.AcknowledgedCommitWithoutCloseSurvivesProcessExit" time="0.0876756" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = RecoveryTest.AcknowledgedCommitWithoutCloseSurvivesProcessExit
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from RecoveryTest
+[ RUN      ] RecoveryTest.AcknowledgedCommitWithoutCloseSurvivesProcessExit
+[       OK ] RecoveryTest.AcknowledgedCommitWithoutCloseSurvivesProcessExit (84 ms)
+[----------] 1 test from RecoveryTest (84 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (84 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="RecoveryTest.TornUncommittedAndCommittedDataPagesAreRepaired" classname="RecoveryTest.TornUncommittedAndCommittedDataPagesAreRepaired" time="0.12208" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = RecoveryTest.TornUncommittedAndCommittedDataPagesAreRepaired
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from RecoveryTest
+[ RUN      ] RecoveryTest.TornUncommittedAndCommittedDataPagesAreRepaired
+[       OK ] RecoveryTest.TornUncommittedAndCommittedDataPagesAreRepaired (118 ms)
+[----------] 1 test from RecoveryTest (118 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (118 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="RecoveryTest.AbortDecisionAndInterruptedPhysicalUndoRemainAborted" classname="RecoveryTest.AbortDecisionAndInterruptedPhysicalUndoRemainAborted" time="0.185752" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = RecoveryTest.AbortDecisionAndInterruptedPhysicalUndoRemainAborted
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from RecoveryTest
+[ RUN      ] RecoveryTest.AbortDecisionAndInterruptedPhysicalUndoRemainAborted
+[       OK ] RecoveryTest.AbortDecisionAndInterruptedPhysicalUndoRemainAborted (182 ms)
+[----------] 1 test from RecoveryTest (182 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (182 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="RecoveryTest.IncompleteWalHeadersPayloadsAndCommitFramesAreTrimmed" classname="RecoveryTest.IncompleteWalHeadersPayloadsAndCommitFramesAreTrimmed" time="1.1802" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = RecoveryTest.IncompleteWalHeadersPayloadsAndCommitFramesAreTrimmed
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from RecoveryTest
+[ RUN      ] RecoveryTest.IncompleteWalHeadersPayloadsAndCommitFramesAreTrimmed
+[       OK ] RecoveryTest.IncompleteWalHeadersPayloadsAndCommitFramesAreTrimmed (1176 ms)
+[----------] 1 test from RecoveryTest (1176 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1176 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="RecoveryTest.RecoveryCanCrashRepeatedlyDuringRedoAndPublishing" classname="RecoveryTest.RecoveryCanCrashRepeatedlyDuringRedoAndPublishing" time="0.30574" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = RecoveryTest.RecoveryCanCrashRepeatedlyDuringRedoAndPublishing
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from RecoveryTest
+[ RUN      ] RecoveryTest.RecoveryCanCrashRepeatedlyDuringRedoAndPublishing
+[       OK ] RecoveryTest.RecoveryCanCrashRepeatedlyDuringRedoAndPublishing (302 ms)
+[----------] 1 test from RecoveryTest (303 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (303 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="RecoveryTest.UncommittedStructuralChangesRestoreOriginalAndCommittedSplitsPersist" classname="RecoveryTest.UncommittedStructuralChangesRestoreOriginalAndCommittedSplitsPersist" time="5.22516" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = RecoveryTest.UncommittedStructuralChangesRestoreOriginalAndCommittedSplitsPersist
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from RecoveryTest
+[ RUN      ] RecoveryTest.UncommittedStructuralChangesRestoreOriginalAndCommittedSplitsPersist
+[       OK ] RecoveryTest.UncommittedStructuralChangesRestoreOriginalAndCommittedSplitsPersist (5222 ms)
+[----------] 1 test from RecoveryTest (5222 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (5222 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="RecoveryTest.TornSuperblocksMissingDataFilesAndBadIndexHeadersAreRepairable" classname="RecoveryTest.TornSuperblocksMissingDataFilesAndBadIndexHeadersAreRepairable" time="0.835398" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = RecoveryTest.TornSuperblocksMissingDataFilesAndBadIndexHeadersAreRepairable
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from RecoveryTest
+[ RUN      ] RecoveryTest.TornSuperblocksMissingDataFilesAndBadIndexHeadersAreRepairable
+[       OK ] RecoveryTest.TornSuperblocksMissingDataFilesAndBadIndexHeadersAreRepairable (832 ms)
+[----------] 1 test from RecoveryTest (832 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (832 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="RecoveryTest.CompleteCorruptWalFramesAreNotTreatedAsTornTails" classname="RecoveryTest.CompleteCorruptWalFramesAreNotTreatedAsTornTails" time="0.823679" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = RecoveryTest.CompleteCorruptWalFramesAreNotTreatedAsTornTails
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from RecoveryTest
+[ RUN      ] RecoveryTest.CompleteCorruptWalFramesAreNotTreatedAsTornTails
+[       OK ] RecoveryTest.CompleteCorruptWalFramesAreNotTreatedAsTornTails (820 ms)
+[----------] 1 test from RecoveryTest (820 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (820 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="RecoveryTest.CorruptPayloadAndLostWalOrManifestFailClosed" classname="RecoveryTest.CorruptPayloadAndLostWalOrManifestFailClosed" time="1.04473" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = RecoveryTest.CorruptPayloadAndLostWalOrManifestFailClosed
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from RecoveryTest
+[ RUN      ] RecoveryTest.CorruptPayloadAndLostWalOrManifestFailClosed
+[       OK ] RecoveryTest.CorruptPayloadAndLostWalOrManifestFailClosed (1041 ms)
+[----------] 1 test from RecoveryTest (1041 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1041 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="RecoveryTest.ImmutableBaselineCorruptionDoesNotOverwriteData" classname="RecoveryTest.ImmutableBaselineCorruptionDoesNotOverwriteData" time="0.0292801" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = RecoveryTest.ImmutableBaselineCorruptionDoesNotOverwriteData
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from RecoveryTest
+[ RUN      ] RecoveryTest.ImmutableBaselineCorruptionDoesNotOverwriteData
+[       OK ] RecoveryTest.ImmutableBaselineCorruptionDoesNotOverwriteData (26 ms)
+[----------] 1 test from RecoveryTest (26 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (26 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="RecoveryTest.WalOwnershipRejectsSecondCoordinatorBeforeRepair" classname="RecoveryTest.WalOwnershipRejectsSecondCoordinatorBeforeRepair" time="0.443542" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = RecoveryTest.WalOwnershipRejectsSecondCoordinatorBeforeRepair
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from RecoveryTest
+[ RUN      ] RecoveryTest.WalOwnershipRejectsSecondCoordinatorBeforeRepair
+[       OK ] RecoveryTest.WalOwnershipRejectsSecondCoordinatorBeforeRepair (440 ms)
+[----------] 1 test from RecoveryTest (440 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (440 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="RecoveryTest.FailedCommitForceNeverReportsSuccessAndOutcomeIsAtomic" classname="RecoveryTest.FailedCommitForceNeverReportsSuccessAndOutcomeIsAtomic" time="0.59793" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = RecoveryTest.FailedCommitForceNeverReportsSuccessAndOutcomeIsAtomic
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from RecoveryTest
+[ RUN      ] RecoveryTest.FailedCommitForceNeverReportsSuccessAndOutcomeIsAtomic
+[       OK ] RecoveryTest.FailedCommitForceNeverReportsSuccessAndOutcomeIsAtomic (594 ms)
+[----------] 1 test from RecoveryTest (594 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (594 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="RecoveryTest.AFailureAfterForcedCommitDoesNotUndoTheCommittedDecision" classname="RecoveryTest.AFailureAfterForcedCommitDoesNotUndoTheCommittedDecision" time="0.368016" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = RecoveryTest.AFailureAfterForcedCommitDoesNotUndoTheCommittedDecision
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from RecoveryTest
+[ RUN      ] RecoveryTest.AFailureAfterForcedCommitDoesNotUndoTheCommittedDecision
+[       OK ] RecoveryTest.AFailureAfterForcedCommitDoesNotUndoTheCommittedDecision (364 ms)
+[----------] 1 test from RecoveryTest (364 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (364 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="RecoveryTest.AdoptsExistingUnloggedHeapAndIndexAsNonemptyBaseline" classname="RecoveryTest.AdoptsExistingUnloggedHeapAndIndexAsNonemptyBaseline" time="0.223527" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = RecoveryTest.AdoptsExistingUnloggedHeapAndIndexAsNonemptyBaseline
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from RecoveryTest
+[ RUN      ] RecoveryTest.AdoptsExistingUnloggedHeapAndIndexAsNonemptyBaseline
+[       OK ] RecoveryTest.AdoptsExistingUnloggedHeapAndIndexAsNonemptyBaseline (220 ms)
+[----------] 1 test from RecoveryTest (220 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (220 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="RecoveryTest.DataOnlyCopyWithWalStampsIsNotSilentlyAdopted" classname="RecoveryTest.DataOnlyCopyWithWalStampsIsNotSilentlyAdopted" time="0.13728" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = RecoveryTest.DataOnlyCopyWithWalStampsIsNotSilentlyAdopted
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from RecoveryTest
+[ RUN      ] RecoveryTest.DataOnlyCopyWithWalStampsIsNotSilentlyAdopted
+[       OK ] RecoveryTest.DataOnlyCopyWithWalStampsIsNotSilentlyAdopted (134 ms)
+[----------] 1 test from RecoveryTest (134 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (134 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="RecoveryTest.RawStorageOwnerPreventsRecoveryFromOverwritingItsFiles" classname="RecoveryTest.RawStorageOwnerPreventsRecoveryFromOverwritingItsFiles" time="0.0338125" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = RecoveryTest.RawStorageOwnerPreventsRecoveryFromOverwritingItsFiles
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from RecoveryTest
+[ RUN      ] RecoveryTest.RawStorageOwnerPreventsRecoveryFromOverwritingItsFiles
+[       OK ] RecoveryTest.RawStorageOwnerPreventsRecoveryFromOverwritingItsFiles (30 ms)
+[----------] 1 test from RecoveryTest (30 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (30 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="CliTest.AccountTransferRollbackAndRestart" classname="CliTest.AccountTransferRollbackAndRestart" time="0.0330317" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = CliTest.AccountTransferRollbackAndRestart
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from CliTest
+[ RUN      ] CliTest.AccountTransferRollbackAndRestart
+[       OK ] CliTest.AccountTransferRollbackAndRestart (30 ms)
+[----------] 1 test from CliTest (30 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (30 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="CliTest.EscapesCaseCommentsAndIntegerLimits" classname="CliTest.EscapesCaseCommentsAndIntegerLimits" time="0.0228634" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = CliTest.EscapesCaseCommentsAndIntegerLimits
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from CliTest
+[ RUN      ] CliTest.EscapesCaseCommentsAndIntegerLimits
+[       OK ] CliTest.EscapesCaseCommentsAndIntegerLimits (20 ms)
+[----------] 1 test from CliTest (20 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (20 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="CliTest.SyntaxErrorsDoNotPartiallyExecuteOrAbortActiveWork" classname="CliTest.SyntaxErrorsDoNotPartiallyExecuteOrAbortActiveWork" time="0.0252515" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = CliTest.SyntaxErrorsDoNotPartiallyExecuteOrAbortActiveWork
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from CliTest
+[ RUN      ] CliTest.SyntaxErrorsDoNotPartiallyExecuteOrAbortActiveWork
+[       OK ] CliTest.SyntaxErrorsDoNotPartiallyExecuteOrAbortActiveWork (22 ms)
+[----------] 1 test from CliTest (22 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (22 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="CliTest.EngineErrorAbortsEntireTransactionAndNextCommandAutocommits" classname="CliTest.EngineErrorAbortsEntireTransactionAndNextCommandAutocommits" time="0.0246127" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = CliTest.EngineErrorAbortsEntireTransactionAndNextCommandAutocommits
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from CliTest
+[ RUN      ] CliTest.EngineErrorAbortsEntireTransactionAndNextCommandAutocommits
+[       OK ] CliTest.EngineErrorAbortsEntireTransactionAndNextCommandAutocommits (21 ms)
+[----------] 1 test from CliTest (21 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (21 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="CliTest.EofAndExitExplicitlyRollbackUnfinishedWork" classname="CliTest.EofAndExitExplicitlyRollbackUnfinishedWork" time="0.0382967" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = CliTest.EofAndExitExplicitlyRollbackUnfinishedWork
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from CliTest
+[ RUN      ] CliTest.EofAndExitExplicitlyRollbackUnfinishedWork
+[       OK ] CliTest.EofAndExitExplicitlyRollbackUnfinishedWork (35 ms)
+[----------] 1 test from CliTest (35 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (35 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="CliTest.RejectsUnknownTablesAndTransactionMisuse" classname="CliTest.RejectsUnknownTablesAndTransactionMisuse" time="0.0123144" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = CliTest.RejectsUnknownTablesAndTransactionMisuse
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from CliTest
+[ RUN      ] CliTest.RejectsUnknownTablesAndTransactionMisuse
+[       OK ] CliTest.RejectsUnknownTablesAndTransactionMisuse (9 ms)
+[----------] 1 test from CliTest (9 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (9 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="CliTest.HelpStatsFlushAndEmptyRanges" classname="CliTest.HelpStatsFlushAndEmptyRanges" time="0.0209782" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = CliTest.HelpStatsFlushAndEmptyRanges
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from CliTest
+[ RUN      ] CliTest.HelpStatsFlushAndEmptyRanges
+[       OK ] CliTest.HelpStatsFlushAndEmptyRanges (18 ms)
+[----------] 1 test from CliTest (18 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (18 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="CliTest.ExecutableBatchReportsErrorsAndPersistsOtherCommands" classname="CliTest.ExecutableBatchReportsErrorsAndPersistsOtherCommands" time="0.02525" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = CliTest.ExecutableBatchReportsErrorsAndPersistsOtherCommands
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from CliTest
+[ RUN      ] CliTest.ExecutableBatchReportsErrorsAndPersistsOtherCommands
+[       OK ] CliTest.ExecutableBatchReportsErrorsAndPersistsOtherCommands (22 ms)
+[----------] 1 test from CliTest (22 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (22 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="CliTest.ShutdownSignalsDuringPartialInputRollBackAndClose" classname="CliTest.ShutdownSignalsDuringPartialInputRollBackAndClose" time="0.0458031" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = CliTest.ShutdownSignalsDuringPartialInputRollBackAndClose
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from CliTest
+[ RUN      ] CliTest.ShutdownSignalsDuringPartialInputRollBackAndClose
+[       OK ] CliTest.ShutdownSignalsDuringPartialInputRollBackAndClose (43 ms)
+[----------] 1 test from CliTest (43 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (43 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="CliTest.BenchmarkExercisesAllWorkloadsAndRefusesExistingDirectory" classname="CliTest.BenchmarkExercisesAllWorkloadsAndRefusesExistingDirectory" time="0.163269" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = CliTest.BenchmarkExercisesAllWorkloadsAndRefusesExistingDirectory
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from CliTest
+[ RUN      ] CliTest.BenchmarkExercisesAllWorkloadsAndRefusesExistingDirectory
+Benchmark failed: benchmark --dir must not exist
+[       OK ] CliTest.BenchmarkExercisesAllWorkloadsAndRefusesExistingDirectory (161 ms)
+[----------] 1 test from CliTest (161 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (161 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="StressTest.SixWritersAndTwoScannersPreserveTransferInvariantAcrossRestart" classname="StressTest.SixWritersAndTwoScannersPreserveTransferInvariantAcrossRestart" time="1.22619" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = StressTest.SixWritersAndTwoScannersPreserveTransferInvariantAcrossRestart
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from StressTest
+[ RUN      ] StressTest.SixWritersAndTwoScannersPreserveTransferInvariantAcrossRestart
+[       OK ] StressTest.SixWritersAndTwoScannersPreserveTransferInvariantAcrossRestart (1223 ms)
+[----------] 1 test from StressTest (1223 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1223 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="StressTest.ConcurrentInsertDeleteRollbackAndIndexReuseHaveExactFinalKeys" classname="StressTest.ConcurrentInsertDeleteRollbackAndIndexReuseHaveExactFinalKeys" time="1.67154" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = StressTest.ConcurrentInsertDeleteRollbackAndIndexReuseHaveExactFinalKeys
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from StressTest
+[ RUN      ] StressTest.ConcurrentInsertDeleteRollbackAndIndexReuseHaveExactFinalKeys
+[       OK ] StressTest.ConcurrentInsertDeleteRollbackAndIndexReuseHaveExactFinalKeys (1668 ms)
+[----------] 1 test from StressTest (1668 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1668 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="ValidationSuiteTest.RealLookupSamplesConcurrencyAndBufferCounters" classname="ValidationSuiteTest.RealLookupSamplesConcurrencyAndBufferCounters" time="0.16652" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = ValidationSuiteTest.RealLookupSamplesConcurrencyAndBufferCounters
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from ValidationSuiteTest
+[ RUN      ] ValidationSuiteTest.RealLookupSamplesConcurrencyAndBufferCounters
+[       OK ] ValidationSuiteTest.RealLookupSamplesConcurrencyAndBufferCounters (164 ms)
+[----------] 1 test from ValidationSuiteTest (164 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (164 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="ValidationSuiteTest.EveryCrashPointActuallyExitsAndRecoversTwice" classname="ValidationSuiteTest.EveryCrashPointActuallyExitsAndRecoversTwice" time="0.769429" status="run">
+		<properties/>
+		<system-out>Running main() from /tmp/custom-db-tools/root/usr/src/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = ValidationSuiteTest.EveryCrashPointActuallyExitsAndRecoversTwice
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from ValidationSuiteTest
+[ RUN      ] ValidationSuiteTest.EveryCrashPointActuallyExitsAndRecoversTwice
+[       OK ] ValidationSuiteTest.EveryCrashPointActuallyExitsAndRecoversTwice (767 ms)
+[----------] 1 test from ValidationSuiteTest (767 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (767 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+</testsuite>

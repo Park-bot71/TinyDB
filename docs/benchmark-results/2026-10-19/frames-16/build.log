@@ -1,0 +1,10 @@
+-- Configuring done (0.0s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/parth/Desktop/Custom_DB/build-release
+[ 50%] Built target tinydb
+[ 66%] Built target storage_demo
+[ 66%] Built target index_demo
+[ 83%] Built target tinydb_cli_support
+[ 83%] Built target transaction_demo
+[ 91%] Built target tinydb_shell
+[100%] Built target tinydb_bench

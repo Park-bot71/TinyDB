@@ -1,0 +1,22 @@
+-- Configuring done (0.1s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/parth/Desktop/Custom_DB/build-sanitize
+[ 10%] Built target gtest
+[ 70%] Built target tinydb
+[ 80%] Built target gtest_main
+[ 85%] Building CXX object CMakeFiles/tinydb_validation.dir/benchmarks/validation_suite.cpp.o
+[ 90%] Linking CXX executable tinydb_validation
+[ 90%] Built target tinydb_validation
+[ 95%] Building CXX object CMakeFiles/validation_tests.dir/tests/validation_tests.cpp.o
+[100%] Linking CXX executable validation_tests
+[100%] Built target validation_tests
+Internal ctest changing into directory: /home/parth/Desktop/Custom_DB/build-sanitize
+Test project /home/parth/Desktop/Custom_DB/build-sanitize
+    Start 124: ValidationSuiteTest.RealLookupSamplesConcurrencyAndBufferCounters
+1/2 Test #124: ValidationSuiteTest.RealLookupSamplesConcurrencyAndBufferCounters ...   Passed    0.38 sec
+    Start 125: ValidationSuiteTest.EveryCrashPointActuallyExitsAndRecoversTwice
+2/2 Test #125: ValidationSuiteTest.EveryCrashPointActuallyExitsAndRecoversTwice ....   Passed    1.42 sec
+
+100% tests passed, 0 tests failed out of 2
+
+Total Test time (real) =   1.81 sec

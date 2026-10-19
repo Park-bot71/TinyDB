@@ -5,6 +5,7 @@
 #include <utility>
 
 #include "common/encoding.h"
+#include "recovery/wal.h"
 
 namespace tinydb::detail {
 struct Frame {
@@ -24,6 +25,8 @@ struct BufferPoolState {
   const std::size_t capacity;
   std::unique_ptr<Frame[]> frames;
   BufferPool::ForceWal force_wal;
+  std::shared_ptr<Wal> wal;
+  FileId file_id = 0;
   mutable std::mutex mutex;
   std::unordered_map<PageId, std::size_t> table;
   std::size_t hand = 0;
@@ -166,12 +169,16 @@ const Page& WritePageGuard::page() const {
 void WritePageGuard::replace(Page image, Lsn lsn) {
   (void)page();  // Check moved/dropped guard before dereferencing state_.
   auto& frame = state_->frames[frame_];
-  if (image.id() != frame.id || image.type() != PageType::Heap ||
-      lsn < encoding::load<Lsn>(frame.page.bytes, 16))
+  if (image.id() != frame.id || !is_data_page_type(image.type()) || image.type() != frame.page.type() ||
+      (!state_->wal && lsn < encoding::load<Lsn>(frame.page.bytes, 16)))
     throw Error(ErrorCode::InvalidArgument, "replacement must preserve page identity and not decrease its LSN");
   encoding::store<Lsn>(image.bytes, 16, lsn);
   image.seal();
   image.validate(frame.id);
+  if (state_->wal) {
+    if (lsn != 0) throw Error(ErrorCode::InvalidArgument, "WAL owns page LSN assignment");
+    image = state_->wal->log_page(state_->file_id, frame.page, image);
+  }
   frame.page = std::move(image);
   frame.dirty.store(true, std::memory_order_relaxed);
 }
@@ -197,17 +204,19 @@ WritePageGuard BufferPool::fetch_write(PageId id) {
   try { return WritePageGuard(state_, index); }
   catch (...) { state_->unpin(index); throw; }
 }
-WritePageGuard BufferPool::new_page() {
+WritePageGuard BufferPool::new_page(PageType type) {
   std::size_t index;
   {
     std::lock_guard lock(state_->mutex);
     state_->check_open();
+    if (!is_data_page_type(type))
+      throw Error(ErrorCode::InvalidArgument, "allocation requires a supported data-page type");
     index = state_->victim();  // Fail before allocating anything if exhausted.
     state_->flush_frame(index);
     PageId id;
-    try { id = state_->disk.allocate_page(); }
+    try { id = state_->disk.allocate_page(type); }
     catch (const Error& error) { if (error.code() == ErrorCode::Io) state_->failed = true; throw; }
-    state_->install(index, Page::create(id, PageType::Heap));
+    state_->install(index, state_->disk.read_page(id)); // Retain allocator-assigned page LSN.
   }
   try { return WritePageGuard(state_, index); }
   catch (...) { state_->unpin(index); throw; }
@@ -266,6 +275,28 @@ BufferPoolStats BufferPool::stats() const {
     result.dirty_pages += frame.dirty.load(std::memory_order_relaxed) ? 1U : 0U;
   }
   return result;
+}
+void BufferPool::discard_all() {
+  std::lock_guard lock(state_->mutex);
+  if (state_->closed) throw Error(ErrorCode::Closed, "buffer pool is closed");
+  state_->require_unpinned();
+  for (std::size_t i = 0; i < state_->capacity; ++i) {
+    auto& frame = state_->frames[i];
+    frame.id = kInvalidPageId;
+    frame.referenced = false;
+    frame.dirty.store(false, std::memory_order_relaxed);
+  }
+  state_->table.clear();
+  state_->hand = 0;
+  state_->failed = false;
+}
+void BufferPool::attach_wal(std::shared_ptr<Wal> wal, std::uint32_t file_id) {
+  std::lock_guard lock(state_->mutex); state_->check_open(); state_->require_unpinned();
+  if (state_->wal || !wal) throw Error(ErrorCode::InvalidArgument, "invalid buffer WAL attachment");
+  for (std::size_t i = 0; i < state_->capacity; ++i)
+    if (state_->frames[i].dirty.load()) throw Error(ErrorCode::Busy, "flush cache before WAL attachment");
+  state_->wal = wal; state_->file_id = file_id;
+  state_->force_wal = [wal = std::move(wal)](Lsn lsn) { wal->force(lsn); };
 }
 std::vector<PageId> BufferPool::allocated_pages() const {
   std::lock_guard lock(state_->mutex);

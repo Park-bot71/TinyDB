@@ -9,6 +9,7 @@
 #include "storage/slotted_page.h"
 
 namespace tinydb {
+namespace detail { struct DatabaseState; }
 // A single unindexed heap per file. Owns its disk manager and bounded page cache.
 class HeapFile {
  public:
@@ -23,6 +24,11 @@ class HeapFile {
   void sync();
   void close();
  private:
+  friend struct detail::DatabaseState;
+  void begin_undo();
+  void commit_undo();
+  void rollback_undo();
+  void attach_wal(std::shared_ptr<Wal> wal);
   mutable std::mutex mutex_;
   DiskManager disk_;
   mutable BufferPool pool_;  // Reads pin/touch frames, even for const heap methods.

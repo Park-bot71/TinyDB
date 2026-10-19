@@ -36,7 +36,7 @@ void Page::seal() { encoding::store<std::uint32_t>(bytes, 12, checksum(*this)); 
 void Page::validate(PageId expected_id) const {
   if (encoding::load<std::uint32_t>(bytes, 0) != kMagic ||
       encoding::load<std::uint16_t>(bytes, 4) != kFormatVersion || id() != expected_id ||
-      encoding::load<std::uint16_t>(bytes, 6) > static_cast<std::uint16_t>(PageType::Free) ||
+      encoding::load<std::uint16_t>(bytes, 6) > static_cast<std::uint16_t>(PageType::IndexInternal) ||
       ((expected_id == 0) != (type() == PageType::Metadata)) ||
       encoding::load<std::uint32_t>(bytes, 12) != checksum(*this))
     throw Error(ErrorCode::Corruption, "invalid page header or checksum at page " + std::to_string(expected_id));

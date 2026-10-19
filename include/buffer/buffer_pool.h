@@ -75,12 +75,16 @@ class BufferPool {
   BufferPool& operator=(const BufferPool&) = delete;
   [[nodiscard]] ReadPageGuard fetch_read(PageId id);
   [[nodiscard]] WritePageGuard fetch_write(PageId id);
-  [[nodiscard]] WritePageGuard new_page();
+  [[nodiscard]] WritePageGuard new_page(PageType type = PageType::Heap);
   void delete_page(PageId id);  // Busy if pinned; discards any cached image after free.
   void flush_page(PageId id);   // Busy if pinned; nonresident page is validated, then a no-op.
   void flush_all();             // Busy if ANY frame is pinned, before writing anything.
   void sync();                  // flush_all + fsync; flush alone is not a durability boundary.
   void close();                 // sync + reject future operations; does not close the disk.
+  // Discard images after out-of-cache physical undo. Requires exclusive owner
+  // quiescence and no pins; resets the pool failure flag after disk restoration.
+  void discard_all();
+  void attach_wal(std::shared_ptr<Wal> wal, std::uint32_t file_id);
   [[nodiscard]] BufferPoolStats stats() const;
   [[nodiscard]] std::vector<PageId> allocated_pages() const;
   [[nodiscard]] PageId page_count() const;

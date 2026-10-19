@@ -1,0 +1,11 @@
+lookups=1000
+lookups=2000
+lookups=3000
+lookups=4000
+lookups=5000
+lookups=6000
+lookups=7000
+lookups=8000
+lookups=9000
+lookups=10000
+{"capacity_per_file":"64","category":"lookup","correctness":"pass","dataset_size":"10000","failures":"0","heap_evictions":"1019967","heap_hit_rate":"3.2352941176470585e-05","heap_hits":"33","heap_misses":"1019967","index_evictions":"0","index_hit_rate":"0","index_hits":"0","index_misses":"0","median_latency_us":"6728.7084999999997","name":"sequential","operations":"10000","seconds":"67.674348945999995","seed":"20261019","status":"pass","successes":"10000","throughput_ops_s":"147.76647512308378","workers":"1"}

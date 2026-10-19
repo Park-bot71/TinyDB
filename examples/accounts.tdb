@@ -1,0 +1,19 @@
+# Run: ./build/tinydb /tmp/tinydb-accounts --batch < examples/accounts.tdb
+CREATE TABLE accounts
+BEGIN
+INSERT accounts 1 "Alice" 1000
+INSERT accounts 2 "Bob" 500
+COMMIT
+
+BEGIN
+UPDATE accounts 1 "Alice" 800
+UPDATE accounts 2 "Bob" 700
+COMMIT
+
+BEGIN
+UPDATE accounts 1 "Alice" 0
+UPDATE accounts 2 "Bob" 0
+ROLLBACK
+SELECT accounts *
+CHECK
+EXIT

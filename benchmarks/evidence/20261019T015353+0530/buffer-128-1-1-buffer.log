@@ -1,0 +1,1 @@
+{"capacity_per_file":"1","category":"buffer","correctness":"pass","dataset_size":"128","heap_evictions":"9999","heap_hit_rate":"0","heap_hits":"0","heap_misses":"10000","name":"hot16_scan128","operations":"10000","seed":"20261019","status":"pass","workers":"1"}

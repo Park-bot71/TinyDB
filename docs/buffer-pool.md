@@ -39,9 +39,23 @@ a disk page. Thus pin exhaustion and failed WAL force do not allocate a page.
 An allocation followed by memory-allocation failure may leave an allocated empty
 page, which the heap can use later. `delete_page(id)` rejects pinned pages,
 frees the disk page, and removes any cached image without flushing obsolete data.
-A reused page ID receives a fresh empty frame image. Allocation, free-list and
-record-generation writes still use the direct nontransactional disk allocator;
-they will need logging in Phase 5.
+A reused page ID receives a fresh empty frame image. New-page creation reads the
+allocated page back so that a WAL-assigned LSN is preserved. Allocation, free-list
+and record-generation writes use the direct disk allocator; the Phase 5
+coordinator attaches WAL to this path and forces each update before its write.
+Standalone allocators remain unlogged.
+
+Phase 3 adds `new_page(PageType)` for heap, index-header, index-leaf and
+index-internal pages. The default remains a heap page. Metadata/free types are
+rejected before allocation. Both the disk manager and guard replacement enforce
+the allocated type; a page may change type only after being freed/reallocated.
+
+Phase 4 adds `discard_all()` for restoring a quiescent cache after physical disk
+undo. It rejects pins, invalidates all images without flushing, and resets the
+pool failure flag after disk restoration. This is a destructive cache operation
+with an explicit owner-quiescence precondition, not a substitute for sync. The
+transaction coordinator calls it under its exclusive storage latch after the
+disk manager restores its baseline. Independent users must uphold that contract.
 
 ## Dirty state, LSNs and flushing
 
@@ -50,7 +64,11 @@ A write guard exposes only a const page. Modify a local copy and call
 identity/type, disallows decreasing the resident LSN, writes the requested LSN
 at offset 16 and recalculates/validates the checksum before changing the frame.
 Invalid replacement leaves the old image intact. Heap operations use
-`SlottedPage` to validate record layout before replacement and keep LSN zero.
+`SlottedPage` to validate record layout before replacement. With attached WAL,
+replacement requires the caller's LSN argument to be zero, appends a full
+before/after UPDATE, installs its assigned LSN and only then marks the page dirty.
+Standalone heap operations keep LSN zero; standalone pools also support explicit
+nondecreasing LSNs with a caller-provided force callback.
 
 Every dirty write, whether triggered by eviction, `new_page()`, `flush_page`,
 `flush_all`, `sync` or `close`, uses the same ordering:
@@ -61,19 +79,19 @@ Every dirty write, whether triggered by eviction, `new_page()`, `flush_page`,
 3. Write the page through `DiskManager`.
 4. Clear dirty state and count the successful page write.
 
-LSN zero explicitly means unlogged Phase 2 data; it skips the callback. The
-callback is an integration contract with a future WAL implementation, not a
-durable log implementation. Tests use an instrumented callback and inspect the
-actual data file during callback execution to verify ordering. There is still
-no transaction/recovery guarantee, and the allocator cannot yet be used for
-logged transactions. In a future logger, fatal log failure must keep rejecting
-subsequent forces; the pool cannot decide whether a log error is recoverable.
+LSN zero means unlogged data and skips the callback. The Phase 5 coordinator
+attaches its durable WAL force implementation to both pools, with another LSN
+force check at the disk boundary. Standalone callback tests inspect the actual
+data file during callback execution to verify ordering. Fatal log failure keeps
+rejecting subsequent forces; the pool cannot decide whether an arbitrary
+provider's log error is recoverable.
 
 If WAL force throws, the frame stays resident, unpinned and dirty, and the page
 write does not occur. Callers may retry if the WAL provider permits it. If a data
 write or file sync throws, the pool enters a failed state; even cache hits then
-fail with `Io`. Stop using it and reopen the database. Checksums detect damage;
-this milestone cannot repair it.
+fail with `Io`. Stop using it and reopen the database. Standalone pools detect
+damage without repairing it; the transactional coordinator runs WAL recovery
+before constructing its pools.
 
 `flush_page` requires that page to have no pins. A valid nonresident page is
 already outside the cache, so flushing it validates it and does nothing.
@@ -88,7 +106,8 @@ and marks the pool closed, rejecting future operations; it leaves the borrowed
 disk manager open. `HeapFile::close()` closes both in that order. Repeated
 successful close is harmless. Destructors discard unflushed cache contents and
 close descriptors without claiming durability. Always use checked `sync()` or
-`close()` when writes must survive process exit.
+`close()` for standalone writes that must survive process exit. Transactional
+writes become durable through the coordinator's forced COMMIT instead.
 
 ## Synchronization and lifetime
 
