@@ -97,6 +97,28 @@ def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def environment_summary(path):
+    """Keep reports readable; the complete captured environment stays linked."""
+    lines = path.read_text().splitlines()
+    def field(label):
+        return next((line.split(":", 1)[1].strip() for line in lines
+                     if ":" in line and line.split(":", 1)[0].strip() == label), "not recorded")
+    memory = next((line.split()[1] + " bytes" for line in lines if line.startswith("Mem:")), "not recorded")
+    compiler = next((line for line in lines if line.startswith(("c++ (", "g++ (", "clang version", "Apple clang"))), "not recorded")
+    filesystem = "not recorded"
+    for i, line in enumerate(lines):
+        if line.startswith("Filesystem") and i + 1 < len(lines):
+            parts = lines[i + 1].split()
+            if len(parts) >= 2:
+                filesystem = f"{parts[0]} ({parts[1]})"
+            break
+    flags = [field(label).split("=", 1)[1] for label in ("CMAKE_CXX_FLAGS", "CMAKE_CXX_FLAGS_RELEASE")
+             if "=" in field(label)]
+    return [("CPU", f"{field('Model name')}; {field('CPU(s)')} logical CPUs"),
+            ("Memory", memory), ("System", field("Platform")), ("Filesystem", filesystem),
+            ("Compiler", compiler), ("Release flags", " ".join(filter(None, flags)) or "not recorded")]
+
+
 class Suite:
     def __init__(self, args):
         self.args = args
@@ -269,27 +291,21 @@ class Suite:
     def report(self):
         # Only measured passing results can supply resume metrics or ratios.
         good = [row for row in self.rows if row["status"] == "pass" and row.get("correctness") == "pass"]
+        methodology = os.path.relpath(ROOT / "docs/benchmark-validation.md", self.output)
         lines = ["# TinyDB benchmark and correctness report", "", f"Run started: {self.started} (Asia/Kolkata).", "",
-                 f"Evidence: [{self.evidence.relative_to(self.output)}]({self.evidence.relative_to(self.output)}/environment.txt). "
-                 f"[Commands]({self.evidence.relative_to(self.output)}/commands.txt), [CSV](results.csv).", "",
-                 "## Hardware and compilation", "", "```text", (self.evidence / "environment.txt").read_text(), "```", "",
-                 "## Methodology", "",
-                 "C++20 Release, sanitizers OFF. All database code/APIs are unchanged by this suite. "
-                 "Fresh real heap/index files are populated through HeapFile.insert and BPlusTree.insert with shuffled unique keys, "
-                 "name=benchmark and balance=key. Raw lookup results have no transaction/crash-atomicity guarantee. "
-                 "Each method independently opens/fully validates the same files, verifies every heap/index binding, and warms the same first 1000 probes. "
-                 "Identical retained key streams are used, in indexed-then-sequential order. OS caches are not dropped; CLOCK capacity is bounded per file. "
-                 "Sequential lookup calls the existing materializing heap.scan API and filters until the key matches; it does not scan a preloaded array. "
-                 "Per-request steady_clock timings include lookup, decoding and record verification. Throughput uses complete loop wall time (including timer/sample bookkeeping); "
-                 "startup, warmup, invariant checks, and writing latency files are outside it. Single measured pass per method; no confidence interval or cold-cache claim. "
-                 "Speedup is reported separately as median sequential/indexed latency and indexed/sequential throughput. "
-                 "The Python driver recomputes medians/counts from retained samples and checks identical probes before accepting a measurement.", "",
-                 f"Requested datasets: {self.args.datasets}; lookups **{self.args.lookups} per method/dataset**; "
-                 f"frames/file={self.args.frames}, seed={self.args.seed}. Setup limit={self.args.setup_timeout}s; lookup limit={self.args.lookup_timeout}s; "
-                 f"other phase limit={self.args.phase_timeout}s (zero disables the limit). Timeouts are actual attempted-but-incomplete runs, "
-                 "not unsupported engine capacities and never extrapolated into a metric. No numeric metric is filled for unmeasured work.", "",
-                 "## Correctness validation", "", "| Check | Executed | Passed | Failed | Status | Evidence |",
-                 "| --- | ---: | ---: | ---: | --- | --- |"]
+                 f"[Full environment]({self.evidence.relative_to(self.output)}/environment.txt) · "
+                 f"[Commands]({self.evidence.relative_to(self.output)}/commands.txt) · [Raw results](results.csv)", "",
+                 "## Setup", "", "| Item | Recorded value |", "| --- | --- |"]
+        lines += [f"| {name} | {value} |" for name, value in environment_summary(self.evidence / "environment.txt")]
+        lines += ["", f"C++20 Release; sanitizers off; seed {self.args.seed}; {self.args.frames} frames/file. "
+                  f"Requested records: {self.args.datasets}; {self.args.lookups} lookups per method.", "",
+                  "Both methods validate the same files and warm the same first 1000 probes. OS caches stay warm. "
+                  "Sequential lookup copies the full heap each request. Per-request latency includes decoding/checks; "
+                  "throughput includes loop bookkeeping. Setup, warmup and final validation are outside timing. "
+                  "One measured pass per method; raw lookup is not a transaction. "
+                  f"[Full methodology]({methodology}).", "",
+                  "## Correctness validation", "", "| Check | Executed | Passed | Failed | Status | Evidence |",
+                  "| --- | ---: | ---: | ---: | --- | --- |"]
         for row in self.rows:
             if row["category"] == "correctness":
                 evidence = row.get("evidence")
@@ -297,8 +313,7 @@ class Suite:
                 def count(field):
                     return row[field] if row.get(field) not in (None, "") else "—"
                 lines.append(f"| {row['name']} | {count('operations')} | {count('successes')} | {count('failures')} | {row['status']} | {link} |")
-        lines += ["", "Counts refer to CTest entries; a Python driver entry runs its own unit tests. "
-                  "Separate review rows recheck the suite without remeasuring or replacing the performance samples.", "",
+        lines += ["", "Counts are CTest entries, including a Python test suite. Review rows retain the original performance samples.", "",
                   "## B+ tree: measured comparisons", "", "| Records | Method | Operations | Median latency, µs | Throughput, ops/s | Median speedup | Throughput speedup | Status |",
                   "| ---: | --- | ---: | ---: | ---: | ---: | ---: | --- |"]
         for row in self.rows:
@@ -312,13 +327,9 @@ class Suite:
             if row["category"] == "concurrency":
                 rate = f"{float(row['throughput_ops_s']):.2f}" if row.get("throughput_ops_s") else "—"
                 lines.append(f"| {row.get('workers')} | {row.get('operations', '—')} | {row.get('successes', '—')} | {row.get('failures', '—')} | {row.get('timeouts', '—')} | {rate} | {row.get('correctness')} | {row['status']} |")
-        lines += ["", f"Each worker attempts {self.args.transactions} two-record transactions (Alice -= 1, Bob += 1). "
-                  "Threads wait on one latch; timing starts at release and ends after join. No retries. "
-                  "BEGIN, strict locks, reads, two updates and forced COMMIT are included. Failed attempts/timeouts are counted separately. "
-                  "Every worker-count run verifies exact balances against acknowledged successes, conservation of total balance, "
-                  "full tree/heap binding invariants, lock cleanup, then closes/reopens and verifies again outside timing. "
-                  "The engine has a global writer gate: these are contention/correctness measurements, not parallel write scaling. "
-                  "A 30-second lock timeout is used. No transactional cache statistics are claimed because that API does not expose them.", "",
+        lines += ["", f"Each worker attempts {self.args.transactions} two-record transfers, including durable COMMIT, with no retries. "
+                  "Timing runs from thread release to join. Exact balances, tree invariants and lock cleanup are checked, "
+                  "then verified after reopening. Writers remain serialized; lock timeout is 30 seconds.", "",
                   "## Buffer pool", "", "| Workload | Records/pages | Frames/file | Heap hits | Heap misses | Heap hit rate | Heap evictions | Index hit rate | Index evictions |",
                   "| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |"]
         for row in good:
@@ -329,50 +340,48 @@ class Suite:
                         return "—"
                     return f"{float(row[name]):.2%}"
                 lines.append(f"| {row['name']} | {row.get('dataset_size')} | {row.get('capacity_per_file')} | {row.get('heap_hits', '—')} | {row.get('heap_misses', '—')} | {rate('heap_hit_rate')} | {row.get('heap_evictions', '—')} | {rate('index_hit_rate')} | {row.get('index_evictions', '—')} |")
-        lines += ["", "Lookup counters are deltas over the timed loop, excluding validation/warmup; no index fetches in sequential scans is N/A, not an index miss. "
-                  "The dedicated buffer test allocates 128 real pages and alternates hot-set accesses (16 pages repeated eight times) with a 128-page traversal. "
-                  "It validates every fetched page; counters cover actual BufferPool calls. OS cache hits and allocator I/O are not CLOCK hit statistics.", "",
+        lines += ["", "Lookup counters exclude warmup. The buffer test mixes 16 hot pages with scans of 128 pages; "
+                  "every fetch is validated. OS cache/allocator I/O is excluded; no fetches means N/A.", "",
                   "## Real process crashes", "", "| Distinct scenario | Status | Correctness |", "| --- | --- | --- |"]
         crashes = [row for row in self.rows if row["category"] == "crash"]
         for row in crashes:
             lines.append(f"| {row['name']} | {row['status']} | {row.get('correctness')} |")
         passed = len({row["name"] for row in crashes if row["status"] == "pass"})
-        lines += ["", f"**{passed} distinct crash scenarios passed** out of {len({row['name'] for row in crashes})} reported. "
-                  "Each scenario seeds its own database, execs a child and requires the selected hook to terminate it with _exit(86), without cleanup. "
-                  "The parent reopens twice and checks full exact records, invariants and expected winner/loser outcomes. "
-                  "Recovery-crash cases first force a committed transfer, then crash a second child during reconstruction/publication. "
-                  "An offline pre-recovery read proves a data page remains stale after durable COMMIT. "
-                  "This counts distinct crash points, not repeated restarts, GoogleTest names, or exception injections. "
-                  "It tests process death and partial writes, not device power cuts or media-loss recovery.", "",
+        lines += ["", f"**{passed}/{len({row['name'] for row in crashes})} distinct crash scenarios passed.** "
+                  "Each uses a fresh database and an exec'd child exiting without cleanup. Exact state and invariants "
+                  "are checked after two restarts. Cases include stale data after forced COMMIT and interrupted recovery. "
+                  "These are process/partial-write tests, not device power cuts.", "",
                   "## Failed, incomplete and unsupported work", ""]
         bad = [row for row in self.rows if row["status"] != "pass"]
         lines += [f"- {row['category']}/{row['name']} (rows={row.get('dataset_size', '—')}, workers={row.get('workers', '—')}): **{row['status']}**, {row.get('details', '')}" for row in bad] or ["None in this run."]
-        lines += ["", "Unsupported features are not benchmarked: parallel writers (single writer gate), dynamic tables/SQL, incremental checkpointing/log recycling, "
-                  "cold-cache device latency and transactional cache counters. A dataset timeout is not evidence that the record count is unsupported. "
-                  "Run with --setup-timeout 0 --lookup-timeout 0 to remove those limits; large scans/materializing heap inserts may take substantial time. "
-                  "Child output/progress logs and every completed lookup's raw key/latency samples are retained in evidence; unfinished scans have no fabricated summaries.", "",
+        lines += ["", f"Process limits: setup {self.args.setup_timeout}s, lookup {self.args.lookup_timeout}s, other phases {self.args.phase_timeout}s. "
+                  "Timeouts are incomplete work, not unsupported record counts; no performance is estimated. "
+                  "Use `--setup-timeout 0 --lookup-timeout 0` to remove dataset limits. "
+                  "Parallel writers, SQL, checkpointing, cold-device latency and transactional cache counters are outside this benchmark.", "",
                   "## Strongest verified resume metrics", ""]
         core = max((row for row in good if row["category"] == "correctness" and row["name"].startswith("ctest")),
                    key=lambda row: int(row["successes"]), default=None)
         if core:
-            lines.append(f"- Passed **{core['successes']} automated correctness tests** in the recorded Release build (see JUnit); no sanitizer/race-detector result is inferred.")
+            lines.append(f"- **{core['successes']} Release CTest entries passed** (includes the Python driver suite).")
         pairs = [row for row in good if row.get("median_latency_speedup")]
         if pairs:
             best = max(pairs, key=lambda row: int(row["dataset_size"]))
-            lines.append(f"- Verified **{float(best['median_latency_speedup']):.2f}× lower median lookup latency** ({float(best['median_latency_us']):.2f} µs indexed) versus materializing heap scans over **{best['dataset_size']} records**, with **{best['operations']} identical-key lookups per method**, warm OS caches, {best['capacity_per_file']} frames/file.")
+            lines.append(f"- **{float(best['median_latency_speedup']):.2f}× median lookup speedup** at **{best['dataset_size']} records**: "
+                         f"{float(best['median_latency_us']):.2f} µs indexed, {best['operations']} identical-key requests per method, warm OS cache, {best['capacity_per_file']} frames/file.")
         concurrent = [row for row in good if row["category"] == "concurrency" and int(row.get("failures", 1)) == 0]
         if concurrent:
             largest = max(concurrent, key=lambda row: int(row["workers"]))
-            lines.append(f"- Validated **{largest['workers']} concurrent transaction workers**, **{largest['successes']} committed two-record transfers**, **0 failed attempts**, exact recovered balances and invariants; **{float(largest['throughput_ops_s']):.1f} successful tx/s** on this workload (serialized writers).")
+            lines.append(f"- **{largest['workers']} workers committed {largest['successes']} transfers with zero failures**, "
+                         f"at {float(largest['throughput_ops_s']):.1f} tx/s; recovered balances verified, writers serialized.")
         if passed:
-            lines.append(f"- Passed **{passed} distinct real process-crash scenarios**, including durable-COMMIT-before-data-flush and interrupted recovery; verified exact state after two restarts per case.")
+            lines.append(f"- **{passed} distinct process-crash scenarios passed**, with exact state verified after two restarts each.")
         cache_rows = [row for row in good if row["category"] == "buffer"]
         if len(cache_rows) >= 2:
             low = min(cache_rows, key=lambda row: int(row["capacity_per_file"]))
             high = max(cache_rows, key=lambda row: int(row["capacity_per_file"]))
             lines.append(f"- Measured CLOCK hit rates of **{float(low['heap_hit_rate']):.1%} at {low['capacity_per_file']} frames** and **{float(high['heap_hit_rate']):.1%} at {high['capacity_per_file']} frames**, with **{low['operations']} verified page fetches** per configuration; workload-specific, not a general speedup.")
-        lines += ["", "Use the workload qualifiers and measured scope in resume bullets. Do not claim million-record results, linear scaling, "
-                  "production ACID certification, or zero failures for incomplete/unsupported tests. The CSV is the source of truth; this report derives every metric from accepted rows.", ""]
+        lines += ["", "Keep workload qualifiers in resume claims. These results do not establish million-record performance, "
+                  "parallel write scaling or production ACID certification.", ""]
         (self.output / "report.md").write_text("\n".join(lines))
 
 
